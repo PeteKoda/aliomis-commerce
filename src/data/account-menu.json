@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "iconClass": "icon-f-94",
+    "text": "Profile",
+    "link": "/profile/",
+    "action": false,
+    "authenticated": true
+  },
+  {
+    "id": 2,
+    "iconClass": "icon-f-76",
+    "text": "Log Out",
+    "link": "",
+    "action": "logout",
+    "authenticated": true
+  },
+  {
+    "id": 3,
+    "iconClass": "icon-f-76",
+    "text": "Log In",
+    "link": "",
+    "action": "login",
+    "authenticated": false
+  },
+  {
+    "id": 4,
+    "iconClass": "icon-f-94",
+    "text": "Register",
+    "link": "",
+    "action": "register",
+    "authenticated": false
+  }
+]

@@ -7,7 +7,7 @@ const ADD_TO_CART = gql`
         key
         product {
           id
-          productId
+          databaseId
           name
           description
           type
@@ -30,7 +30,7 @@ const ADD_TO_CART = gql`
         }
         variation {
           id
-          variationId
+          databaseId
           name
           description
           type

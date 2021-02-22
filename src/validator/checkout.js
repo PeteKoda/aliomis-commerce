@@ -27,7 +27,9 @@ const validateAndSanitizeCheckoutForm = ( data ) => {
 	data.email = ( ! isEmpty( data.email ) ) ? data.email : '';
 	data.createAccount = ( ! isEmpty( data.createAccount ) ) ? data.createAccount : '';
 	data.orderNotes = ( ! isEmpty( data.orderNotes ) ) ? data.orderNotes : '';
-	data.paymentMethod = ( ! isEmpty( data.paymentMethod ) ) ? data.paymentMethod : '';
+    data.paymentMethod = ( ! isEmpty( data.paymentMethod ) ) ? data.paymentMethod : '';
+    data.shippingMethod = ( ! isEmpty( data.shippingMethod ) ) ? data.shippingMethod : '';
+
 
 	/**
 	 * Checks for error if required is true

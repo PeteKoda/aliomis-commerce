@@ -1,73 +1,47 @@
 import { isEmpty, isArray } from 'lodash';
-import {useState, useRef} from 'react';
+import { useState, useRef } from 'react';
+import InnerImageZoom from 'react-inner-image-zoom';
+import Image from 'next/image'
 
-const GalleryCarousel = ({gallery}) => {
 
-    if ( isEmpty(gallery) || ! isArray( gallery ) ) {
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+
+
+const GalleryCarousel = ({ gallery }) => {
+
+    if (isEmpty(gallery) || !isArray(gallery)) {
         return null;
     }
 
-    const activeIndexRef = useRef( { activeIndex: 0 } );
-    const slideRef = useRef( 0 );
-    const [ slide, setSlide ] = useState( 0 );
-    const [ restartSlide, setRestartSlide ] = useState( 0 );
-    const { activeIndex } = activeIndexRef.current;
+    const [activeImg, setActiveImg] = useState(gallery[0])
 
-    /**
-     * Change to next slide.
-     */
-    const nextSlide = () => {
-
-        if ( 1 === gallery.length ) {
-            return null;
-        }
-
-        /**
-         * If if autoplay is set to true
-         * and all slides are finished playing,
-         * set the activeIndex to one and restart the slide from start.
-         */
-        if ( activeIndexRef.current.activeIndex === gallery.length - 1 ) {
-
-            activeIndexRef.current.activeIndex = 0;
-            setRestartSlide( restartSlide + 1 );
-
-        } else {
-
-            // If its not the last slide increment active index by one.
-            activeIndexRef.current.activeIndex =
-                activeIndexRef.current.activeIndex + 1;
-
-        }
-
-        slideRef.current = slideRef.current + 1;
-        setSlide( slideRef.current );
-
-    };
+    function changePreview (item, i){
+        setActiveImg(item)
+    }
 
     return (
-        <div className="banner flex flex-col sm:flex-row justify-between overflow-hidden md:mr-4">
-            <div className="banner-img w-full">
+        <div className="flex flex-wrap flex-md-nowrap">
+            <div className="flex flex-wrap flex-row md:flex-col justify-evenly order-2 order-md-1 ig-w w-full">
                 {
-                    gallery.map( ( item, index ) => {
-                        const opacity = ( activeIndex === index || 1 === gallery.length ) ? 'opacity-100' : 'opacity-0';
+                    gallery.map((item, index) => {
                         return (
-                            <div key={item?.id} className={`${opacity} banner-img-container absolute top-0 left-0`}>
-                                <img
-                                    src={item?.mediaItemUrl} loading="lazy" alt={ item?.altText ? item?.altText : item?.title }
-                                />
+                            <div className={"w-1/2 sm:w-1/3 md:w-full mt-0 md:mt-2"} key={item?.id} >
+                                <div className="justify-center flex pt-2 sm: pt-0">
+                                    <Image
+                                        src={item?.sourceUrl}
+                                        alt={item?.altText}
+                                        width={118}
+                                        height={160}
+                                        onClick={() => changePreview(item, index)}
+                                    />
+                                </div>
                             </div>
                         )
                     })
                 }
-                <div className="slider-button">
-                    <button className="focus:outline-none" onClick={nextSlide}>
-                        <svg width="25px" className="inline-block mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" /></svg>
-                    </button>
-                    <button className="focus:outline-none" onClick={nextSlide}>
-                        <svg width="25px" className="inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                    </button>
-                </div>
+            </div>
+            <div className="w-full pl-0 md:pl-4 order-1 order-md-2">
+                <InnerImageZoom src={activeImg?.sourceUrl} zoomType="hover" zoomSrc={activeImg?.mediaItemUrl} />
             </div>
         </div>
     )

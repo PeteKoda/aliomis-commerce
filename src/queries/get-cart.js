@@ -8,7 +8,8 @@ const GET_CART = gql`
           key
           product {
             id
-            productId
+            sku
+            databaseId
             name
             description
             type
@@ -32,11 +33,68 @@ const GET_CART = gql`
                 title   
               }
             }
-
+            ... on SimpleProduct {
+                crossSell{
+                  edges{
+                    node{
+                        id
+                        databaseId
+                        averageRating
+                        slug
+                        description
+                        image {
+                          id
+                          uri
+                          title
+                          srcSet
+                          sourceUrl
+                        }
+                        name
+                        productCategories{
+                            edges{
+                              node{
+                                slug
+                              }
+                            }
+                        }       
+                        ... on SimpleProduct {
+                          price
+                          regularPrice
+                          id
+                        }
+                        ... on VariableProduct {
+                          price
+                          regularPrice
+                          id
+                        }
+                        ... on ExternalProduct {
+                          price
+                          id
+                          regularPrice
+                          externalUrl
+                        }
+                        ... on GroupProduct {
+                          products {
+                            nodes {
+                              ... on SimpleProduct {
+                                id
+                                regularPrice
+                                price
+                              }
+                            }
+                          }
+                          id
+                        }
+                      
+                    }
+                  }
+                }
+            }
           }
+
           variation {
             id
-            variationId
+            databaseId
             name
             description
             type
@@ -68,7 +126,7 @@ const GET_CART = gql`
       appliedCoupons {
         nodes {
           id
-          couponId
+          databaseId
           discountType
           amount
           dateExpiry
@@ -94,6 +152,21 @@ const GET_CART = gql`
       feeTotal
       discountTax
       discountTotal
+    }
+    cart {
+        needsShippingAddress
+        chosenShippingMethod
+        availableShippingMethods {
+          packageDetails
+          rates {
+            cost
+            id
+            instanceId
+            label
+            methodId
+          }
+          supportsShippingCalculator
+        }
     }
   }
 `;

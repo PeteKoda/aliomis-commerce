@@ -1,45 +1,77 @@
 import Link from 'next/link';
 import AddToCartButton from '../components/cart/AddToCartButton';
 import clientConfig from '../../client-config';
+import Image from 'next/image'
 import { isEmpty } from 'lodash';
 import Price from "./single-product/price";
 
-const Product = ( props ) => {
-	const { product } = props;
 
-	return (
-		// @TODO Need to handle Group products differently.
-		undefined !== product && 'GroupProduct' !== product.__typename ? (
-			<div className="product mb-5">
+const Product = (props) => {
+    const { product } = props;
 
+    return (
+        // @TODO Need to handle Group products differently.
+        undefined !== product && 'GroupProduct' !== product.__typename ? (
+            <div className="product mb-3">
+                <Link href={`/${product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
+                    <a className="relative block" style={{width:"180px", height: "280px"}}>
+                        {!isEmpty(product.image) ? (
+                            <Image
+                                src={product.image.sourceUrl}
+                                alt="Product image"
+                                layout="fill"
+                                className={"object-cover"}
+                                // width={props.customWidth ? props.customWidth : 480}
+                                // height={props.customHeight ? props.customHeight : 480}
+                            />
+                            // <img src={product.image.sourceUrl} alt="Product image" />
+                        ) : !isEmpty(clientConfig.productImagePlaceholder) ? (
+                            <img
+                                src={clientConfig.productImagePlaceholder}
+                                alt="Placeholder product image"
+                            />
+                        ) : null}
 
-				<Link href={ `/product/${ product.slug }`} >
-					<a>
+                        {/* {!props.addToCartStatic && (
+                            <div className="product-image-inner">
+                                <AddToCartButton product={product} />
+                            </div>
+                        )} */}
 
-						{ !isEmpty( product.image ) ? (
-							<img src={ product.image.sourceUrl } alt="Product image"/>
-						) : !isEmpty( clientConfig.productImagePlaceholder ) ? (
-							<img
-								src={ clientConfig.productImagePlaceholder }
-								alt="Placeholder product image"
-							/>
-						) : null }
-					</a>
-				</Link>
-				<div className="product-info">
-					<h3 className="product-title mt-3 font-medium text-gray-800">
-						{ product.name ? product.name : '' }
-					</h3>
-					<div className="product-description text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: (product?.description)}}/>
-					<Price salesPrice={product?.price} regularPrice={product?.regularPrice}/>
-					<AddToCartButton product={ product }/>
-				</div>
+                        {/* <div className="product-image-inner">
+                            <div className="qodef-woo-product-additional-icons">
+                                <div className="yith-wcwl-add-to-wishlist add-to-wishlist-435  wishlist-fragment on-first-load">
+                                    <div className="yith-wcwl-add-button">
+                                        {"<3"}
+                                    </div>
+                                </div>
+                                <a href="#" className="button yith-wcqv-button" >Quick View</a>
+                            </div>
+                            <a href="https://konsept.qodeinteractive.com/product/ficus/" className="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
+                            <AddToCartButton product={product} />
+                        </div> */}
+                    </a>
+                </Link>
+                { props.details && (
+                    <div className={`product-info ${props.detailClasses}`}>
+                        <h3 className="product-title mt-3">
+                            {product.name ? product.name : ''}
+                        </h3>
+                        <Price salesPrice={product?.price} regularPrice={product?.regularPrice} />
+                    </div>
+                )}
 
-			</div>
-		) : (
-			''
-		)
-	);
+                { props.bttn && (
+                    <div>
+                        <AddToCartButton product={product} classes={props.bttnClasses} />
+                    </div>
+                )}
+
+            </div>
+        ) : (
+                ''
+            )
+    );
 };
 
 export default Product;

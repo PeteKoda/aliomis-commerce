@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "text": "HOME",
+    "link": "/",
+    "mega_menu": false,
+    "promo": false
+  },
+  {
+    "id": 2,
+    "text": "SHOP",
+    "link": "#",
+    "mega_menu": true,
+    "promo": false
+  },
+  {
+    "id": 3,
+    "text": "BLOG",
+    "link": "/blog/",
+    "mega_menu": false
+  },
+  {
+    "id": 4,
+    "text": "COMPANY",
+    "link": "/company/",
+    "submenu": false,
+    "mega_menu": false,
+    "promo": false
+  },
+  {
+    "id": 5,
+    "text": "CONTACT",
+    "link": "/contact/",
+    "submenu": null,
+    "mega_menu": false,
+    "promo": false
+  }
+]

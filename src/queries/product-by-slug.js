@@ -3,16 +3,19 @@ import { gql } from "@apollo/client";
 export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 	product(id: $slug, idType: SLUG) {
 	  id
-	  productId
+	  databaseId
 	  averageRating
 	  slug
 	  description
+      shortDescription
 	  galleryImages {
           nodes {
             id
             title
             altText
             mediaItemUrl
+            srcSet
+            sourceUrl(size:PRODUCT_IMAGE_KD)
           }
       }
 	  image {
@@ -21,8 +24,138 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 		title
 		srcSet
 		sourceUrl
-	  }
-	  name
+      }
+      
+      brands{
+        edges{
+          node{
+            name
+            description
+          }
+        }
+      }
+      name
+      averageRating
+
+      productAcf{
+        additionalInformation{
+          row{
+            col{
+              entry
+            }
+          }
+        }
+      }
+
+      upsell(first: 4){
+        edges{
+          node{
+            id
+            databaseId
+            averageRating
+            slug
+            description
+            image {
+              id
+              uri
+              title
+              srcSet
+              sourceUrl
+            }
+            name
+            productCategories{
+                edges{
+                  node{
+                    slug
+                  }
+                }
+            }       
+            ... on SimpleProduct {
+              price
+              regularPrice
+              id
+            }
+            ... on VariableProduct {
+              price
+              regularPrice
+              id
+            }
+            ... on ExternalProduct {
+              price
+              id
+              regularPrice
+              externalUrl
+            }
+            ... on GroupProduct {
+              products {
+                nodes {
+                  ... on SimpleProduct {
+                    id
+                    regularPrice
+                    price
+                  }
+                }
+              }
+              id
+            }
+          }
+        }
+      }
+
+      related(first: 4) {
+        edges {
+          node {
+            id
+            databaseId
+            averageRating
+            slug
+            description
+            image {
+              id
+              uri
+              title
+              srcSet
+              sourceUrl
+            }
+            name
+            productCategories{
+                edges{
+                  node{
+                    slug
+                  }
+                }
+            }       
+            ... on SimpleProduct {
+              price
+              regularPrice
+              id
+            }
+            ... on VariableProduct {
+              price
+              regularPrice
+              id
+            }
+            ... on ExternalProduct {
+              price
+              id
+              regularPrice
+              externalUrl
+            }
+            ... on GroupProduct {
+              products {
+                nodes {
+                  ... on SimpleProduct {
+                    id
+                    regularPrice
+                    price
+                  }
+                }
+              }
+              id
+            }
+          }
+        }
+      }
 	  ... on SimpleProduct {
 		price
 		id
@@ -60,6 +193,13 @@ export const PRODUCT_SLUGS = gql` query Products {
     nodes {
       id
       slug
+      productCategories{
+        edges{
+          node{
+            slug
+          }
+        }
+      }
     }
   }
 }

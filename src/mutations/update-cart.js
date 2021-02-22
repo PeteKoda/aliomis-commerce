@@ -13,7 +13,7 @@ const UPDATE_CART = gql`
         key
         product {
           id
-          productId
+          databaseId
           name
           description
           type
@@ -36,7 +36,7 @@ const UPDATE_CART = gql`
         }
         variation {
           id
-          variationId
+          databaseId
           name
           description
           type
@@ -67,22 +67,22 @@ const UPDATE_CART = gql`
         key
         product {
           id
-              productId
+            databaseId
         }
         variation {
           id
-          variationId
+          databaseId
         }
       }
       updated {
         key
         product {
           id
-      productId
+            databaseId
         }
         variation {
           id
-          variationId
+          databaseId
         }
       }
     }
