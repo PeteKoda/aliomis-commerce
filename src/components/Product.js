@@ -14,7 +14,7 @@ const Product = (props) => {
         undefined !== product && 'GroupProduct' !== product.__typename ? (
             <div className="product mb-3">
                 <Link href={`/${product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
-                    <a className="relative block" style={{width:"180px", height: "280px"}}>
+                    <a className="relative block mx-auto" style={{width: props.customWidth ? props.customWidth : "180px", height: props.customHeight ? props.customHeight : "280px"}}>
                         {!isEmpty(product.image) ? (
                             <Image
                                 src={product.image.sourceUrl}
@@ -54,7 +54,7 @@ const Product = (props) => {
                 </Link>
                 { props.details && (
                     <div className={`product-info ${props.detailClasses}`}>
-                        <h3 className="product-title mt-3">
+                        <h3 className="product-title mt-3 text-center">
                             {product.name ? product.name : ''}
                         </h3>
                         <Price salesPrice={product?.price} regularPrice={product?.regularPrice} />

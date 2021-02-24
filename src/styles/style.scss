@@ -500,6 +500,11 @@ body {
     line-height: 60px;
     font-weight: 200;
     font-style: italic;
+
+    @media screen and (max-width: 767px){
+        font-size: 1.5rem;
+        text-align: center;
+    }
 }
 
 .home-h1 {
@@ -513,6 +518,11 @@ body {
     font-weight: 600;
     font-size: 50px;
     opacity: 1;
+
+    @media screen and (max-width: 767px){
+        font-size: 2rem;
+        text-align: center;
+    }
 }
 
 .carousel.carousel-slider .control-arrow {
@@ -937,3 +947,50 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .ldio-hzdb83wvgw div { box-sizing: content-box; }
 
+.tt-collapse-title-custom {
+    cursor: pointer;
+    color: #191919;
+    padding-bottom: 12px;
+    padding-right: 20px;
+    border-bottom: 1px solid #e9e7e7;
+    transition: color 0.2s linear;
+    width: 100%;
+    text-align: left;
+    outline: none;
+}
+
+.tt-collapse-title-custom:before{
+    content: "";
+    font-family: "wokiee";
+    position: absolute;
+    right: 0;
+    top: -3px;
+    font-size: 20px;
+    line-height: 1;
+    color: #777777;
+}
+
+.tt-collapse-title-custom-open:before{
+    content: "";
+}
+
+.input-range__label--max, .input-range__label--min {
+    display: none;
+}
+
+
+.order2-1 {
+    order: 2;
+
+    @media (max-width: 768px){
+        order:1
+    }
+}
+
+.order1-2 {
+    order: 1;
+
+    @media (max-width: 768px){
+        order:2
+    }
+}

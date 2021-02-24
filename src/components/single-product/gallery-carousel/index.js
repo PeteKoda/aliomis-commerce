@@ -21,7 +21,7 @@ const GalleryCarousel = ({ gallery }) => {
 
     return (
         <div className="flex flex-wrap flex-md-nowrap">
-            <div className="flex flex-wrap flex-row md:flex-col justify-evenly order-2 order-md-1 ig-w w-full">
+            <div className="flex flex-wrap flex-row md:flex-col justify-evenly order1-2 ig-w w-full">
                 {
                     gallery.map((item, index) => {
                         return (
@@ -40,7 +40,7 @@ const GalleryCarousel = ({ gallery }) => {
                     })
                 }
             </div>
-            <div className="w-full pl-0 md:pl-4 order-1 order-md-2">
+            <div className="w-full pl-0 md:pl-4 order2-1 flex">
                 <InnerImageZoom src={activeImg?.sourceUrl} zoomType="hover" zoomSrc={activeImg?.mediaItemUrl} />
             </div>
         </div>

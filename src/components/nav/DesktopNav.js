@@ -16,7 +16,12 @@ const DesktopNav = ({ className, productCategories }) => {
                     >
                         { navItem.link !== "#" 
                             ?
-                                <Link href={navItem.link}><a>{navItem.text}</a></Link>
+                                ( navItem.link.includes("http")
+                                    ?
+                                    <a href={navItem.link}>{navItem.text}</a>
+                                    :
+                                    <Link href={navItem.link}><a>{navItem.text}</a></Link>
+                                )
                             :
                                 <a>{navItem.text}</a>
                         }

@@ -9,6 +9,7 @@ import UserForm from "./UserForm"
 import validateAndSanitizeAccountForm from '../../validator/accountForm';
 import validateAndSanitizeGeneralUserForm from '../../validator/userGeneralForm';
 import validateAndSanitizeAccountFormShipping from '../../validator/accountFormShipping';
+import cogoToast from "cogo-toast";
 
 import GET_USER from "../../queries/get-user";
 import GET_ORDERS from "../../queries/get-orders";
@@ -128,7 +129,11 @@ const ProfilePage = () => {
         },
         onCompleted: (data) => {
             console.log(data)
-            refetch();
+
+            cogoToast.success(`Visit ${userInput.email} to reset your account.`, {
+                position: 'top-center',
+                hideAfter: 10
+            })
         },
         onError: (error) => {
             if (error && error.graphQLErrors) {
@@ -340,7 +345,7 @@ const ProfilePage = () => {
                         </div>
                     </nav>
                 </div>
-                <div className=" w-full md:w-auto mx-auto mb-16 lg:mb-8" style={{maxWidth:"750px"}}>
+                <div className=" w-full md:w-auto mx-auto mb-16 lg:mb-8" style={{ maxWidth: "750px" }}>
                     {activeTab === 1 && (
                         <div className="px-4 lg:px-8">
                             <div>
@@ -351,7 +356,21 @@ const ProfilePage = () => {
                                         <span className="text-xl">
                                             Password:
                                         </span>
-                                        <button className="bttn-default" onClick={() => resetPassword()}>Reset by email</button>
+                                        <button className="bttn-default px-4" onClick={() => resetPassword()}>
+                                            {resetLoading
+                                                ?
+                                                <div className="loadingio-spinner-eclipse-acxari33u6t">
+                                                    <div className="ldio-hzdb83wvgw">
+                                                        <div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                :
+                                                <span>
+                                                    Reset by email
+                                                </span>
+                                            }
+                                        </button>
                                     </div>
                                 </div>
                                 <button className="checkout-bttn mx-auto block my-4" onClick={(e) => userComplete(e)}>Save</button>
@@ -413,7 +432,7 @@ const ProfilePage = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </div >
     )
 };
 

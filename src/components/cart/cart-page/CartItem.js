@@ -146,7 +146,8 @@ const CartItem = ({
 
                 {(item.crossSell && item.crossSell.edges.length > 0) && (
                     <div style={{ marginTop: "1rem" }}>
-                        <button className={`m-auto block bttn-btg block md:hidden ${csOpen && ("bttn-btg-active")}`} onClick={() => setCsOpen(!csOpen)}><h3 style={{ color: "white", fontSize: "21px" }}>Products Best Bought Together</h3></button>
+                        <h4 class="tt-collapse-title block md:hidden" onClick={() => setCsOpen(!csOpen)}>Products Best Bought Together</h4>
+                        {/* <button className={`m-auto block bttn-btg block md:hidden ${csOpen && ("bttn-btg-active")}`} onClick={() => setCsOpen(!csOpen)}><h3 style={{ color: "white", fontSize: "21px" }}></h3></button> */}
                         { csOpen && (
                             <div className="flex mt-4 mx-auto justify-center flex-wrap" style={{ maxWidth: "556px" }}>
                                 {item.crossSell.edges.map((cs, i) => (

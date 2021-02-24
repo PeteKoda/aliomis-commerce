@@ -772,7 +772,11 @@ export default function CategorySingle(props) {
                                 maxValue={(categoryAcf && categoryAcf.priceRange.priceMax) ? categoryAcf.priceRange.priceMax : 100}
                                 minValue={(categoryAcf && categoryAcf.priceRange.priceMin) ? categoryAcf.priceRange.priceMin : 0}
                                 value={priceVal}
-                                onChange={value => setPriceVal(value)} />
+                                onChange={value => setPriceVal(value)}
+                                minLabel=""
+                                maxLabel=""
+                                />
+                                
 
                             <button className="bttn-default mt-8 ml-auto mr-auto" onClick={() => addBrandFilter(priceVal, "", "price", "price-li")}>Apply</button>
                         </div>
@@ -784,7 +788,7 @@ export default function CategorySingle(props) {
                         <div className="flex justify-between md:justify-end mb-8">
                             <div className="block md:hidden">
                                 <button
-                                    className="p-4"
+                                    className="p-2"
                                     style={{ 
                                         border: "1px solid #808080",
                                         borderRadius: "5px",

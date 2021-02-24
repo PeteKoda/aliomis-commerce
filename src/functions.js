@@ -8,7 +8,8 @@ import { v4 } from 'uuid';
  */
 export const getFloatVal = (string) => {
 
-    let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
+    let floatValue = string.replace("€","");
+    floatValue = floatValue.replace(",", ".")
     return (null !== floatValue) ? parseFloat(parseFloat(floatValue).toFixed(2)) : '';
 
 };
@@ -215,13 +216,13 @@ export const getFormattedCart = (data) => {
     for (let i = 0; i < givenProducts.length; i++) {
         const givenProduct = givenProducts[i].product;
         const product = {};
-        const total = getFloatVal(givenProducts[i].total);
+        const subtotal = getFloatVal(givenProducts[i].subtotal);
 
         product.databaseId = givenProduct.databaseId;
         product.cartKey = givenProducts[i].key;
         product.name = givenProduct.name;
         product.qty = givenProducts[i].quantity;
-        product.price = total / product.qty;
+        product.price = (subtotal / product.qty).toString().replace(".",",");
         product.totalPrice = givenProducts[i].total;
         product.sku = givenProducts[i].product.sku;
         product.image = {

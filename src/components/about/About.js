@@ -12,7 +12,7 @@ const About = ({ data }) => {
                         return (
                             <React.Fragment key={`ab-content-${i}`}>
                                 <div className={`w-full md:w-1/2 flex items-center mt-20`}>
-                                    <div style={{ maxWidth: "500px"}}>
+                                    <div className="pr-0 pr-md-5 " style={{ maxWidth: "500px"}}>
                                         <h3 className="featured-s-h2 pb-4">{ab.title}</h3>
                                         <h4 className="featured-s-h3 pb-2">{ab.subtitle}</h4>
                                         <div dangerouslySetInnerHTML={{ __html: ab.description }} />
@@ -50,7 +50,7 @@ const About = ({ data }) => {
                                     </div>
                                 </div>
                                 <div className={`w-full md:w-1/2 flex items-center mt-20`}>
-                                    <div style={{ maxWidth: "500px"}}>
+                                    <div className="pl-0 pl-md-5" style={{ maxWidth: "500px"}}>
                                         <h3 className="featured-s-h2 pb-4">{ab.title}</h3>
                                         <h4 className="featured-s-h3 pb-2">{ab.subtitle}</h4>
                                         <div dangerouslySetInnerHTML={{ __html: ab.description }} />

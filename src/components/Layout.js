@@ -2,12 +2,12 @@ import Head from "next/head";
 import { AppProvider } from "./context/AppContext";
 // import Header from "./Header";
 // import Footer from "./Footer";
-import {FooterOne as Footer} from "@components/footer";
+import { FooterOne as Footer } from "@components/footer";
 import client from "./ApolloClient";
 import Router from "next/router";
 import NProgress from "nprogress";
 import { ApolloProvider } from "@apollo/client";
-import {HeaderSix as Header} from "./header";
+import { HeaderSix as Header } from "./header";
 
 
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -27,15 +27,20 @@ const Layout = (props) => {
                         <Header productCategories={props.productCategories} />
                     )} */}
 
-                    <Header
-                        containerFluid={false}
-                        logoAlignment="center"
-                        navbarAlignment="center"
-                        productCategories={props.productCategories}
-                    />
+                    {!props.noHeader && (
+                        <Header
+                            containerFluid={false}
+                            logoAlignment="center"
+                            navbarAlignment="center"
+                            productCategories={props.productCategories}
+                        />
+                    )}
 
                     {props.children}
-                    <Footer />
+
+                    {!props.noHeader && (
+                        <Footer productCategories={props.productCategories} />
+                    )}
                 </div>
             </ApolloProvider>
         </AppProvider>

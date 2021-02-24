@@ -108,22 +108,22 @@ export default function Product(props) {
                         </div>
                         {activeTab === 3 && (
                             <div className="flex overflow-auto">
-                                <table class="rounded-t-lg m-5 mx-auto text-gray-800 w-auto" style={{minWidth: "400px"}}>
-                                    { product?.productAcf?.additionalInformation?.row && product.productAcf.additionalInformation.row.map(( row, i) => (
-                                         <tr key={`cr-${i}`} class="text-left border-b-2" style={ i===0 ? {backgroundColor:"#c9d3a7"} : {borderColor: "#c9d3a75c"}}>
+                                <table class="rounded-t-lg m-5 mx-auto text-gray-800 w-auto" style={{ minWidth: "400px" }}>
+                                    {product?.productAcf?.additionalInformation?.row && product.productAcf.additionalInformation.row.map((row, i) => (
+                                        <tr key={`cr-${i}`} class="text-left border-b-2" style={i === 0 ? { backgroundColor: "#c9d3a7" } : { borderColor: "#c9d3a75c" }}>
                                             {row && row.col.map((col, y) => {
-                                                if(i === 0){
+                                                if (i === 0) {
                                                     return (
                                                         <th key={`ct-${y}`} class="px-4 py-3">{col.entry}</th>
                                                     )
-                                                }else{
+                                                } else {
                                                     return (
                                                         <td key={`ct-${y}`} class="px-4 py-3">{col.entry}</td>
                                                     )
                                                 }
                                             })}
-                                         </tr>
-                                    )) }
+                                        </tr>
+                                    ))}
                                 </table>
                             </div>
                         )}
@@ -131,16 +131,18 @@ export default function Product(props) {
                             <div className="pt-8" dangerouslySetInnerHTML={{ __html: activeTabContent }} />
                         </div>
                     </div>
-                    <div className="py-12">
-                        <div>
-                            <h2 className="product-h1 text-center mb-10 w-full" style={{ fontSize: "29px", letterSpacing: ".2em" }}>CUSTOMERS ALSO SAW</h2>
+                    {(undefined !== product.upsell.edges) && product.upsell.edges?.length && (
+                        <div className="py-12">
+                            <div>
+                                <h2 className="product-h1 text-center mb-10 w-full" style={{ fontSize: "29px", letterSpacing: ".2em" }}>CUSTOMERS ALSO SAW</h2>
+                            </div>
+                            <div className="product-categories flex flex-wrap justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8 relative">
+                                {(undefined !== product.upsell.edges) && product.upsell.edges?.length && (
+                                    product.upsell.edges.map(product => <ProductView key={`upsell-${product?.node?.id}`} product={product?.node} categorySlug={product?.node?.productCategories?.edges[0].node.slug} loading={false} />)
+                                )}
+                            </div>
                         </div>
-                        <div className="product-categories flex flex-wrap justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8 relative">
-                            {(undefined !== product.upsell.edges) && product.upsell.edges?.length && (
-                                product.upsell.edges.map(product => <ProductView key={`upsell-${product?.node?.id}`} product={product?.node} categorySlug={product?.node?.productCategories?.edges[0].node.slug} loading={false} />)
-                            )}
-                        </div>
-                    </div>
+                    )}
                     <div className="py-12">
                         <div>
                             <h2 className="product-h1 text-center mb-10 w-full" style={{ fontSize: "29px", letterSpacing: ".2em" }}>RELATED PRODUCTS</h2>
@@ -191,9 +193,11 @@ export async function getStaticPaths() {
 
     const pathsData = []
 
-    data?.products?.nodes && data?.products?.nodes.map((product) => {
-        if (!isEmpty(product?.slug)) {
-            pathsData.push({ params: { slug: product?.slug, categorySlug: product.productCategories.edges[0].node.slug } })
+    data?.productCategories?.edges && data?.productCategories?.edges.map((productCat) => {
+        if (!isEmpty(productCat?.node?.slug)) {
+            productCat?.node?.products?.edges && productCat?.node?.products?.edges.map((product) => {
+                pathsData.push({ params: { slug: product?.node?.slug, categorySlug: productCat?.node?.slug } })
+            })
         }
     })
 

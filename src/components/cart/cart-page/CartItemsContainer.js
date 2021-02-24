@@ -128,7 +128,7 @@ const CartItemsContainer = () => {
                             </div>
                         </div>
                         <div className="flex flex-wrap mb-5">
-                            <div className="w-full lg:w-4/5 pr-0 lg:pr-8" >
+                            <div className="w-full pr-0" >
                                 {cart.products.length && (
                                     cart.products.map((item, itemNumber) => (
                                         <CartItem
@@ -146,9 +146,8 @@ const CartItemsContainer = () => {
                             </div>
 
                             {/*Cart Total*/}
-                            <div className="row woo-next-cart-total-container border p-3 bg-white w-full lg:w-1/5 flex justify-center">
+                            <div className="row woo-next-cart-total-container border p-3 bg-white flex justify-center">
                                 <div className="">
-                                    {/* <h2 className="text-2xl">Cart Total</h2> */}
                                     <table className="table table-hover mb-1">
                                         <tbody>
                                             <tr className="table-light flex flex-col">

@@ -1,25 +1,32 @@
 import Layout from "../src/components/Layout";
-import Head from "next/head";
+import client from '../src/components/ApolloClient';
+import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
 import ThankYouC from "../src/components/checkout/ThankYou";
 
-const ThankYou = () => (
-    <Layout noHeader={true}>
-        <Head>
-            <script
-                src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
-                crossorigin="anonymous"
-            >
-            </script>
-            <script
-                src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"
-                id="mondial"
-            >
-            </script>
-        </Head>
-        <div className="checkout container mx-auto my-20 px-4 xl:px-0" style={{ maxWidth: "1090px" }}>
-            <ThankYouC />
-        </div>
-    </Layout>
-);
+export default function ThankYou(props) {
 
-export default ThankYou;
+    const { products, productCategories, heroCarousel } = props;
+
+    return (
+        <Layout productCategories={productCategories} >
+            <div className="checkout container mx-auto my-20 px-4 xl:px-0" style={{ maxWidth: "1090px" }}>
+                <ThankYouC />
+            </div>
+        </Layout >
+    )
+};
+
+export async function getStaticProps() {
+
+    const { data } = await client.query({
+        query: PRODUCTS_AND_CATEGORIES_QUERY,
+    });
+
+    return {
+        props: {
+            productCategories: data?.productCategories?.nodes ? data.productCategories.nodes : [],
+        },
+        revalidate: 1
+    }
+
+};

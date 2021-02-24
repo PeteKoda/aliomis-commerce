@@ -126,6 +126,7 @@ const GET_CART = gql`
       appliedCoupons {
         nodes {
           id
+          code
           databaseId
           discountType
           amount

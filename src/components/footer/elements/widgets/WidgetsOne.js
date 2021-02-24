@@ -2,16 +2,14 @@ import Link from "next/link";
 import { useContext } from "react";
 import Widget from "@components/widget";
 import { toCapitalize } from "@utils/toCapitalize";
-import accountData from "@data/account-menu.json";
+import footerGeneralData from "@data/footer-general.json";
 import { arrSortByCharacter } from "@utils/method";
 import { Col, Container, Row } from "react-bootstrap";
 import { getProductsUniqueCategories } from "@utils/product";
 import { ProductsContext } from "@global/ProductsContext";
 
-const WidgetsOne = ({ className }) => {
+const WidgetsOne = ({ className, productCategories }) => {
     const { products } = useContext(ProductsContext);
-    const cats = getProductsUniqueCategories(products, 6);
-    const categories = arrSortByCharacter(cats);
 
     return (
         <div className={`tt-footer-col tt-color-scheme-01 ${className ? className : ''}`}>
@@ -24,13 +22,14 @@ const WidgetsOne = ({ className }) => {
                                 adipisicing elit, sedo eiusmod tempor incididunt ut labore etdolore. </p>
                         </Widget>
                     </Col>
+
                     <Col md={6} lg={2} xl={3}>
-                        <Widget title="CATEGORIES">
+                        <Widget title="GENERAL">
                             <ul className="tt-list">
-                                {categories.map(category => (
-                                    <li key={category}>
-                                        <Link href={`/product-category/${category}`}>
-                                            <a>{toCapitalize(category.toLowerCase())}</a>
+                                {footerGeneralData.map(item => (
+                                    <li key={item.id}>
+                                        <Link href={item.link}>
+                                            <a>{item.text}</a>
                                         </Link>
                                     </li>
                                 ))}
@@ -39,12 +38,12 @@ const WidgetsOne = ({ className }) => {
                     </Col>
 
                     <Col md={6} lg={2} xl={3}>
-                        <Widget title="MY ACCOUNT">
+                        <Widget title="CATEGORIES">
                             <ul className="tt-list">
-                                {accountData.map(item => (
-                                    <li key={item.id}>
-                                        <Link href={item.link}>
-                                            <a>{item.text}</a>
+                                {productCategories.map((productCategory, i) => (
+                                    <li key={productCategory.id + i}>
+                                        <Link href={`/${productCategory.slug}/`}>
+                                            <a>{productCategory.name}</a>
                                         </Link>
                                     </li>
                                 ))}

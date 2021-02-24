@@ -188,19 +188,20 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
   }
 `;
 
-export const PRODUCT_SLUGS = gql` query Products {
-  products(first: 5000) {
-    nodes {
-      id
-      slug
-      productCategories{
+export const PRODUCT_SLUGS = gql`query ProductCategories {
+    productCategories(first:1000){
         edges{
           node{
             slug
+            products(first:1000){
+              edges{
+                node{
+                  slug
+                }
+              }
+            }
           }
         }
-      }
     }
-  }
 }
 `;
