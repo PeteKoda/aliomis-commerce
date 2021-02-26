@@ -1,6 +1,8 @@
 import { isEmpty } from 'lodash';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios"
+import 'sal.js/dist/sal.css';
+import sal from 'sal.js'
 
 const Main = ({ data }) => {
 
@@ -13,6 +15,10 @@ const Main = ({ data }) => {
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const[emailResponse, setEmailResponse] = useState("")
+
+    useEffect(()=>{
+        sal()
+    },[])
 
     if (isEmpty(data)) {
         return null;
@@ -61,7 +67,7 @@ const Main = ({ data }) => {
                         <div className="pt-4" dangerouslySetInnerHTML={{ __html: data.contact.storeDetails }} />
                     </div>
                 </div>
-                <div className="w-full sm:w-1/2 pt-8 sm:pt-0">
+                <div className="w-full sm:w-1/2 pt-8 sm:pt-0" data-sal="fade" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back">
                     {emailResponse === "" && (
                         <div>
                             <div className="flex">

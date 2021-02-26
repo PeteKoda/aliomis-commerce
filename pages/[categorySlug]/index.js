@@ -12,6 +12,8 @@ import "react-input-range/lib/css/index.css"
 import InputRange from 'react-input-range';
 import Select from 'react-select'
 
+import Breadcrumb from "@components/breadcrumb";
+
 import GET_CATEGORIES_QUERY from "../../src/queries/get-categories";
 
 import { isEmpty, stubTrue } from "lodash";
@@ -64,8 +66,8 @@ const colourStyles = {
         padding: 10,
         zIndex: 9,
         outline: "none"
-    }), 
-    control: styles => ({ ...styles, backgroundColor: 'white', width:"200px" }),
+    }),
+    control: styles => ({ ...styles, backgroundColor: 'white', width: "200px" }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
         return {
             ...styles,
@@ -259,15 +261,33 @@ export default function CategorySingle(props) {
                         }
                     }
                 }
+
+                awards{
+                    edges{
+                      node{
+                        name
+                        description
+                        awardAcf{
+                          image{
+                            sourceUrl
+                            altText
+                          }
+                        }
+                      }
+                    }
+                }
+
                 ... on SimpleProduct {
                   price
                   regularPrice
                   id
+                  stockQuantity
                 }
                 ... on VariableProduct {
                   price
                   regularPrice
                   id
+                  stockQuantity
                 }
                 ... on ExternalProduct {
                   price
@@ -534,19 +554,19 @@ export default function CategorySingle(props) {
         }
 
         if (type !== "order") {
-            if (urlParams.get("order")){
+            if (urlParams.get("order")) {
                 pr.order = urlParams.get("order")
-                if(pr.order === "DESC" && urlParams.get("field") === "PRICE"){
+                if (pr.order === "DESC" && urlParams.get("field") === "PRICE") {
                     setSelectInputOption(options[2])
-                }else if(pr.order === "ASC" && urlParams.get("field") === "PRICE"){
+                } else if (pr.order === "ASC" && urlParams.get("field") === "PRICE") {
                     setSelectInputOption(options[1])
                 }
             }
-            if (urlParams.get("field")){
+            if (urlParams.get("field")) {
                 pr.field = urlParams.get("field")
-                if(pr.field === "DATE"){
+                if (pr.field === "DATE") {
                     setSelectInputOption(options[0])
-                }else if(pr.field === "TOTAL_SALES"){
+                } else if (pr.field === "TOTAL_SALES") {
                     setSelectInputOption(options[3])
                 }
             }
@@ -656,8 +676,8 @@ export default function CategorySingle(props) {
         closeModal()
     }
 
-    function handleChange (selectedOption){
-        setSelectInputOption({...selectedOption})
+    function handleChange(selectedOption) {
+        setSelectInputOption({ ...selectedOption })
 
         setOrder(selectedOption.value)
 
@@ -676,6 +696,7 @@ export default function CategorySingle(props) {
 
     return (
         <Layout productCategories={productCategories}>
+            <Breadcrumb />
             <div className="product-categories-container container mx-auto py-12 md:py-20 px-4 xl:px-0" id="shop-section">
                 <div className="flex flex-wrap">
 
@@ -775,8 +796,8 @@ export default function CategorySingle(props) {
                                 onChange={value => setPriceVal(value)}
                                 minLabel=""
                                 maxLabel=""
-                                />
-                                
+                            />
+
 
                             <button className="bttn-default mt-8 ml-auto mr-auto" onClick={() => addBrandFilter(priceVal, "", "price", "price-li")}>Apply</button>
                         </div>
@@ -789,7 +810,7 @@ export default function CategorySingle(props) {
                             <div className="block md:hidden">
                                 <button
                                     className="p-2"
-                                    style={{ 
+                                    style={{
                                         border: "1px solid #808080",
                                         borderRadius: "5px",
                                         padding: "6px",
@@ -809,9 +830,9 @@ export default function CategorySingle(props) {
                                     label="Single select"
                                     options={options}
                                     styles={colourStyles}
-                                    classNamePrefix ={"kd"}
-                                    inputProps={{readOnly:true}}
-                                    isSearchable={ false }
+                                    classNamePrefix={"kd"}
+                                    inputProps={{ readOnly: true }}
+                                    isSearchable={false}
                                 />
 
                                 {/* <Select options={options} styles={customSelect} width='200px' /> */}

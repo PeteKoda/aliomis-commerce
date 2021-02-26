@@ -3707,6 +3707,10 @@ body:not(.touch-device) .arrow-location-center-02.tt-arrow-hover:hover {
       top: 4px;
     }
 
+    li:last-child:before {
+        content: '';
+      }
+
     li:first-child {
       padding-left: 0;
     }

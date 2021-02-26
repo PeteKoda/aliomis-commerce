@@ -2,6 +2,7 @@ import Layout from "../src/components/Layout";
 import client from '../src/components/ApolloClient';
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
 import CONTACT_PAGE_QUERY from "../src/queries/contact-page";
+import Breadcrumb from "@components/breadcrumb";
 
 import Intro from "../src/components/global/Intro"
 
@@ -18,6 +19,7 @@ export default function Contact (props) {
 
 	return (
 			<Layout productCategories={ productCategories } >
+                <Breadcrumb />
                 <Intro data={props.page.contactPageAcf} />
                 <Main data={props.page.contactPageAcf} />
 			</Layout>

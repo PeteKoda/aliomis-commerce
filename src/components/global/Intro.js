@@ -1,12 +1,19 @@
 import { isEmpty, isArray } from 'lodash';
+import {useEffect} from "react"
 import Image from 'next/image'
 import Link from "next/link";
+import 'sal.js/dist/sal.css';
+import sal from 'sal.js'
 
 const Intro = ({ data }) => {
 
     if (isEmpty(data)) {
         return null;
     }
+
+    useEffect(()=>{
+        sal()
+    },[])
 
     return (
         <div className="relative flex items-center justify-center" style={{ minHeight: "50vh" }}>
@@ -20,7 +27,7 @@ const Intro = ({ data }) => {
                 />
             </div>
             <div>
-                <h1 className="home-h1 py-4 text-center">{data.h1}</h1>
+                <h1 className="home-h1 py-4 text-center" data-sal="fade" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back">{data.h1}</h1>
             </div>
 
         </div>

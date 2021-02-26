@@ -1,6 +1,8 @@
 import Layout from "../src/components/Layout";
 import client from '../src/components/ApolloClient';
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
+import Breadcrumb from "@components/breadcrumb";
+
 
 import ResetPassword from "../src/components/profile/ResetPassword"
 
@@ -10,6 +12,7 @@ export default function ResetPasswordPage(props) {
 
     return (
         <Layout productCategories={productCategories} >
+            <Breadcrumb />
            <ResetPassword />
         </Layout>
     )

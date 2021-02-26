@@ -2,6 +2,7 @@ import Layout from "../src/components/Layout";
 import client from '../src/components/ApolloClient';
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
 import ProfilePage from "../src/components/profile/ProfilePage"
+import Breadcrumb from "@components/breadcrumb";
 
 export default function Profile (props) {
 
@@ -9,6 +10,7 @@ export default function Profile (props) {
 
 	return (
 			<Layout productCategories={ productCategories } >
+                <Breadcrumb />
 				<ProfilePage />
 			</Layout>
 	)

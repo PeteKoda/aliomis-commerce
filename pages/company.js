@@ -2,6 +2,7 @@ import Layout from "../src/components/Layout";
 import client from '../src/components/ApolloClient';
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
 import ABOUT_PAGE_QUERY from "../src/queries/about-page";
+import Breadcrumb from "@components/breadcrumb";
 
 import Intro from "../src/components/global/Intro"
 
@@ -20,6 +21,8 @@ export default function Contact(props) {
 
     return (
         <Layout productCategories={productCategories} >
+            <Breadcrumb />
+
             <Intro data={props.page.aboutPageAcf.introGroup} />
 
             <div class="animated-wave" aria-hidden="true">
@@ -28,12 +31,12 @@ export default function Contact(props) {
                 </div>
             </div>
 
-            <section style={{position: "relative",top: "-32px",backgroundColor: "#faf8eb"}}>
+            <section style={{ position: "relative", top: "-32px", backgroundColor: "#faf8eb" }}>
                 <Main data={props.page.aboutPageAcf.introGroup} />
             </section>
 
             <section>
-                <About data={props.page.aboutPageAcf.about}  />
+                <About data={props.page.aboutPageAcf.about} />
             </section>
 
         </Layout>

@@ -62,6 +62,21 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
                 }
           }
 
+          awards{
+            edges{
+              node{
+                name
+                description
+                awardAcf{
+                  image{
+                    sourceUrl
+                    altText
+                  }
+                }
+              }
+            }
+          }
+
 		  name
 		  ... on SimpleProduct {
 			price

@@ -5,6 +5,7 @@ import client from '../../src/components/ApolloClient';
 import AddToCartButton from '../../src/components/cart/AddToCartButton';
 import { PRODUCT_BY_SLUG_QUERY, PRODUCT_SLUGS } from '../../src/queries/product-by-slug';
 import PRODUCTS_AND_CATEGORIES_QUERY from "../../src/queries/product-and-categories";
+import Breadcrumb from "@components/breadcrumb";
 
 import { isEmpty } from 'lodash';
 import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
@@ -52,6 +53,7 @@ export default function Product(props) {
 
     return (
         <Layout productCategories={productCategories}>
+            <Breadcrumb />
             { product ? (
                 <div className="single-product container mx-auto my-24 px-4 xl:px-0">
                     {console.log(props)}
@@ -95,7 +97,7 @@ export default function Product(props) {
                                     <div className="cursor-pointer w-1/3" style={{ borderLeft: "1px solid lightgray" }} onClick={() => changeQuantity("up")}>+</div>
                                 </div>
                                 {
-                                    !product?.stockQuantity 
+                                    !product?.stockQuantity
                                         ?
                                         <div className="flex items-center">
                                             Out Of Stock

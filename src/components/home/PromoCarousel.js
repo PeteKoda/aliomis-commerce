@@ -17,7 +17,7 @@ const PromoCarousel = ({ bestSellers, offers, promo }) => {
     return (
         <div className="container py-20 m-auto px-4">
             <div className="flex flex-wrap items-center mb-20">
-                <div className="w-full lg:w-1/2 order-2 order-lg-1 pt-8 lg:pt-0">
+                <div className="w-full lg:w-1/2 order1-2 pt-8 lg:pt-0">
                     <div data-sal="slide-right" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back" className="mr-auto ml-auto lg:mr-20" style={{ maxWidth: "468px" }}>
                         <Carousel
                             showThumbs={false}
@@ -31,7 +31,7 @@ const PromoCarousel = ({ bestSellers, offers, promo }) => {
                         </Carousel>
                     </div>
                 </div>
-                <div className="w-full lg:w-1/2 order-1 order-lg-2">
+                <div className="w-full lg:w-1/2 order2-1">
                     <div data-sal="slide-left" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back" style={{ maxWidth: "610px" }}>
                         <Image
                             alt={promo.offersImage.altText}

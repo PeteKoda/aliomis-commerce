@@ -9,6 +9,8 @@ import Price from "./single-product/price";
 const Product = (props) => {
     const { product } = props;
 
+    console.log(product)
+
     return (
         // @TODO Need to handle Group products differently.
         undefined !== product && 'GroupProduct' !== product.__typename ? (
@@ -31,6 +33,23 @@ const Product = (props) => {
                                 alt="Placeholder product image"
                             />
                         ) : null}
+
+                        {product?.awards?.edges.length > 0 && (
+                            <div className="flex flex-col relative justify-end items-end">
+                                {product.awards.edges.map((award) => (
+                                    <div>
+                                        <Image
+                                            src={award.node.awardAcf.image.sourceUrl}
+                                            alt={award.node.awardAcf.image.altText}
+                                            title={award.node.description}
+                                            layout="fixed"
+                                            width={40}
+                                            height={40}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
 
                         {/* {!props.addToCartStatic && (
                             <div className="product-image-inner">
