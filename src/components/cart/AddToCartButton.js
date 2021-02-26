@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useQuery, useMutation } from '@apollo/client';
 import { AppContext } from "../context/AppContext";
 import cogoToast from "cogo-toast";
-import htmlDecode from "html-entities-decoder";
+
 
 import { getFormattedCart } from "../../functions";
 import Link from "next/link";
@@ -108,7 +108,7 @@ const AddToCart = (props) => {
         onError: (error) => {
             if (error) {
                 console.log(error)
-                cogoToast.error( htmlDecode(error.graphQLErrors[ 0 ].message) , {
+                cogoToast.error( error.graphQLErrors[ 0 ].message , {
                     position: 'bottom-right',
                     hideAfter: 3
                 })
