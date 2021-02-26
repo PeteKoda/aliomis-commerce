@@ -67,11 +67,13 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
 			price
 			regularPrice
 			id
+            stockQuantity
 		  }
 		  ... on VariableProduct {
 			price
 			regularPrice
 			id
+            stockQuantity
 		  }
 		  ... on ExternalProduct {
 			price

@@ -17,6 +17,8 @@ import StarRatings from 'react-star-ratings';
 export default function Product(props) {
     const { product, productCategories } = props;
 
+    console.log(props)
+
     const [quantity, setQuantity] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
     const [activeTabContent, setActiveTabContent] = useState(product?.description)
@@ -70,8 +72,7 @@ export default function Product(props) {
                         </div>
                         <div className="product-info pl-0 pt-4 md:pt-0 md:pl-8">
                             <h1 className="product-h1">{product.name}</h1>
-                            <Price salesPrice={product?.price} regularPrice={product?.regularPrice} />
-                            <div className="relative" style={{ top: "-12px" }}>
+                            <div className="relative">
                                 <StarRatings
                                     rating={product?.averageRating}
                                     starRatedColor="#8e9b6f"
@@ -80,6 +81,7 @@ export default function Product(props) {
                                     name='rating'
                                 />
                             </div>
+                            <Price salesPrice={product?.price} regularPrice={product?.regularPrice} txtAlign="text-left pt-2" />
                             <div
                                 dangerouslySetInnerHTML={{
                                     __html: product.shortDescription,
@@ -92,7 +94,15 @@ export default function Product(props) {
                                     <div className="w-1/3" style={{ fontFamily: `"EB Garamond",serif` }}>{quantity}</div>
                                     <div className="cursor-pointer w-1/3" style={{ borderLeft: "1px solid lightgray" }} onClick={() => changeQuantity("up")}>+</div>
                                 </div>
-                                <AddToCartButton product={product} quantity={quantity} />
+                                {
+                                    !product?.stockQuantity 
+                                        ?
+                                        <div className="flex items-center">
+                                            Out Of Stock
+                                        </div>
+                                        :
+                                        <AddToCartButton product={product} quantity={quantity} />
+                                }
                             </div>
 
                         </div>

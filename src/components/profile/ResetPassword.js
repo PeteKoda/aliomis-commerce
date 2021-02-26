@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
+import cogoToast from "cogo-toast";
+import htmlDecode from "html-entities-decoder";
 
 import RESET_USER_PASSWORD_MUTATION from "../../mutations/reset-password-confirmed"
 
@@ -27,9 +29,18 @@ import { v4 } from 'uuid';
                 setRequestError(rpError.graphQLErrors[0].message);
             }
 
+            cogoToast.success('Your password changed successfully', {
+                position: 'top-center',
+                hideAfter: 3
+            })
+
         },
         onError: (error) => {
             if (error) {
+                cogoToast.error(htmlDecode(error.graphQLErrors[0].message), {
+                    position: 'top-center',
+                    hideAfter: 3
+                })
                 setRequestError(error.graphQLErrors[0].message);
             }
         }
@@ -62,7 +73,7 @@ import { v4 } from 'uuid';
     const { productCategories } = props;
 
     return (
-            <div>
+            <div className="my-20">
                 <form onSubmit={handleSubmit} className="pt-6 pb-2 my-2 my-32 p-8 mx-auto" style={{maxWidth: "500px"}} >
                     <div className="mb-6">
                         <input style={{ outline: "none" }} className="shadow appearance-none border w-full py-2 px-3 text-grey-darker mb-3" value={user.password} onChange={handleChange} name="password" id="password" type="password" placeholder="New Password" />

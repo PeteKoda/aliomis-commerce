@@ -8,6 +8,8 @@ const ShippingMethod = ({ input, handleOnChange, cart, setShippingInput, loading
     const [isMondial, setIsMondial] = useState(input.shippingMethod && input.shippingMethod.includes("mondial") ? true : false)
 
     useEffect(() => {
+
+
         if (isMondial) {
             initializeMondial()
         } else {
@@ -16,6 +18,7 @@ const ShippingMethod = ({ input, handleOnChange, cart, setShippingInput, loading
     }, []);
 
     useEffect(() => {
+        console.log(input)
         if (input.shippingMethod.includes("mondial")) {
             setIsMondial(true)
             initializeMondial()
@@ -56,6 +59,8 @@ const ShippingMethod = ({ input, handleOnChange, cart, setShippingInput, loading
 
             OnParcelShopSelected:
                 (data) => {
+                    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    console.log(input)
 
                     let newInputState = { ...input };
 
@@ -68,6 +73,8 @@ const ShippingMethod = ({ input, handleOnChange, cart, setShippingInput, loading
                     newInputState.city = data.Ville;
 
                     newInputState.postcode = data.CP;
+
+                    console.log(newInputState)
 
                     setShippingInput(newInputState)
 

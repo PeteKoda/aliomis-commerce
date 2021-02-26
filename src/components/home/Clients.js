@@ -11,7 +11,7 @@ const Clients = ({ clients }) => {
         <div className="my-20">
             <div className={"flex justify-center flex-wrap w-full container m-auto"}>
                 { clients && clients.map((client,i) => (
-                    <div key={`client-${i}`}>
+                    <div key={`client-${i}`} data-sal="fade" data-sal-delay="300" data-sal-duration="500" data-sal-easing="ease-out-sine">
                         <Image
                             alt={client.image.altText}
                             src={client.image.sourceUrl}

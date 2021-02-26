@@ -53,11 +53,14 @@ const StripeForm = (props) => {
                 },
             })
 
+            props.setLoadingPayment(false)
+
             router.push({
                 pathname: `/thank-you/`,
             }, undefined, { shallow: true });
 
         } catch (error) {
+            props.setLoadingPayment(false)
             console.error(error)
         }
     }

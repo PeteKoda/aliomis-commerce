@@ -1,9 +1,15 @@
 import { isEmpty, isArray } from 'lodash';
 import Image from 'next/image'
 import Link from "next/link";
-import { useState, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import 'sal.js/dist/sal.css';
+import sal from 'sal.js'
 
 const IntroBanner = ({ data }) => {
+
+    useEffect(()=>{
+        sal();
+    },[])
 
     if (isEmpty(data)) {
         return null;
@@ -20,7 +26,7 @@ const IntroBanner = ({ data }) => {
                     className={"object-cover"}
                 />
             </div>
-            <div>
+            <div data-sal="fade" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back">
                 <p className="home-up-title text-center">{data.h2}</p>
                 <h1 className="home-h1 py-4">{data.h1}</h1>
                 <div className="flex justify-center">

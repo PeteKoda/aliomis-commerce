@@ -5,6 +5,7 @@ import YourOrder from "./YourOrder";
 import PaymentModes from "./PaymentModes";
 import { AppContext, UserContext } from "../context/AppContext";
 import validateAndSanitizeCheckoutForm from '../../validator/checkout';
+import cogoToast from "cogo-toast";
 import validateAndSanitizeBillingForm from '../../validator/billingForm';
 import { useMutation, useQuery } from '@apollo/client';
 import { getFormattedCart, createCheckoutData, createCustomerUpdateData, createCustomerUpdateDataBillingAsShipping, createCustomerUpdateDataBilling } from "../../functions";
@@ -14,6 +15,8 @@ import GET_USER from "../../queries/get-user";
 import CHECKOUT_MUTATION from "../../mutations/checkout";
 import UPDATE_CUSTOMER_MUTATION from "../../mutations/update-customer"
 import UPDATE_SHIPPING_METHOD_MUTATION from "../../mutations/update-shipping-method"
+
+import BigLoader from "@components/loader/BigLoader"
 
 import StripeForm from "./StripeForm"
 import { Elements } from '@stripe/react-stripe-js'
@@ -41,7 +44,7 @@ const CheckoutForm = () => {
         orderNotes: '',
         paymentMethod: '',
         shippingMethod: 'local_pickup:1',
-        errors: null 
+        errors: null
     };
 
     // Use this for testing purposes, so you dont have to fill the checkout form over an over again.
@@ -83,6 +86,8 @@ const CheckoutForm = () => {
 
     const [formStep, setFormStep] = useState(1);
 
+    const [loadingPayment, setLoadingPayment] = useState(false)
+
 
 
     // Get Cart Data.
@@ -107,18 +112,18 @@ const CheckoutForm = () => {
             input: (loggedUser && loggedUser.customer) ? loggedUser.customer.id : ''
         },
         notifyOnNetworkStatusChange: true,
-        onCompleted: () => {   
+        onCompleted: () => {
             console.log(userResponse)
-            if(userResponse && userResponse.customer ){
+            if (userResponse && userResponse.customer) {
                 console.log(userResponse.customer.billing)
                 setInput({ ...userResponse.customer.billing })
-                setShippingInput({ ...userResponse.customer.shipping , shippingMethod: 'local_pickup:1', email: userResponse.customer.email , phone: userResponse.customer.billing.phone })
+                setShippingInput({ ...userResponse.customer.shipping, shippingMethod: 'local_pickup:1', email: userResponse.customer.email, phone: userResponse.customer.billing.phone })
             }
 
         },
         onError: (error) => {
             if (error && error.graphQLErrors) {
-                
+
                 // setRequestError( error.graphQLErrors[ 0 ].message );
             }
         }
@@ -149,6 +154,7 @@ const CheckoutForm = () => {
         onError: (error) => {
             if (error && error.graphQLErrors) {
                 console.log(error)
+                setLoadingPayment(false)
                 // setRequestError( error.graphQLErrors[ 0 ].message );
             }
         }
@@ -268,6 +274,7 @@ const CheckoutForm = () => {
         if (null !== orderData) {
             // Call the checkout mutation when the value for orderData changes/updates.
             checkout();
+            setLoadingPayment(true)
         }
     }, [orderData]);
 
@@ -293,8 +300,8 @@ const CheckoutForm = () => {
     }, [shippingInput.country])
 
     useEffect(() => {
-        window.scrollTo(0,0)
-    },[formStep])
+        window.scrollTo(0, 0)
+    }, [formStep])
 
     function updateCustomer(type) {
         const customerUpdatedData = billingAsShipping ? createCustomerUpdateDataBillingAsShipping(shippingInput) : createCustomerUpdateData(shippingInput);
@@ -328,6 +335,13 @@ const CheckoutForm = () => {
         console.log(result)
         if (!result.isValid) {
             setShippingInput({ ...shippingInput, errors: result.errors });
+
+            cogoToast.error(result.errors[Object.keys(result.errors)[Object.keys(result.errors).length -1]], {
+                position: 'bottom-right',
+                hideAfter: 3
+            })
+
+            window.scrollTo(0, 0)
             return;
         }
         updateCustomer("shipping-completed")
@@ -366,7 +380,7 @@ const CheckoutForm = () => {
                                         ?
                                         <React.Fragment>
                                             <Billing input={shippingInput} handleOnChange={handleOnChangeShipping} />
-                                            <ShippingMethod input={shippingInput} handleOnChange={handleOnChangeShipping} cart={cart} setShippingInput={setShippingInput} loading={shippingMethodLoading} />
+                                            <ShippingMethod key="shipping-key" input={shippingInput} handleOnChange={handleOnChangeShipping} cart={cart} setShippingInput={setShippingInput} loading={shippingMethodLoading} />
 
                                             {(shippingInput && !shippingInput.shippingMethod.includes("mondial")) && (
                                                 <label className="mt-8">
@@ -380,8 +394,23 @@ const CheckoutForm = () => {
                                                 </label>
                                             )}
 
+                                            {(shippingInput && shippingInput.shippingMethod.includes("mondial") && shippingInput.address2.includes("Mondial"))
+                                                ?
+                                                <button className="checkout-bttn mx-auto block my-4" onClick={(e) => shippingComplete(e)}>Continue</button>
+                                                :(
+                                                    shippingInput && shippingInput.shippingMethod.includes("mondial")
+                                                    ?
+                                                        <div className="w-full text-center text-2xl">Pick a mondial relay store to continue</div>
+                                                    :
+                                                    ""
+                                                )  
+                                            }
 
-                                            <button className="checkout-bttn mx-auto block my-4" onClick={(e) => shippingComplete(e)}>Continue</button>
+                                            {(shippingInput && !shippingInput.shippingMethod.includes("mondial")) && (
+                                                <button className="checkout-bttn mx-auto block my-4" onClick={(e) => shippingComplete(e)}>Continue</button>
+                                            )}
+
+
                                         </React.Fragment>
                                         :
                                         <div>
@@ -454,11 +483,11 @@ const CheckoutForm = () => {
                             </div>
                             {/*	Order*/}
                             <div className="your-orders w-1/3 p-4" style={{ backgroundImage: "linear-gradient(to right,#e1e1e1 .2%,#f4f4f4 .2%)" }}>
-                                <div style={{ position: "sticky",top: "30px"}}>
+                                <div style={{ position: "sticky", top: "30px" }}>
                                     <div className="flex items-center  mb-4">
                                         <div className="pr-2">
                                             {/* <img src="/shopping-cart.svg" style={{ width: "40px" }} /> */}
-                                            <i className="icon-g-48" style={{fontSize:"20px",color: "#4a4a4a"}}/>
+                                            <i className="icon-g-48" style={{ fontSize: "20px", color: "#4a4a4a" }} />
                                         </div>
                                         <div>
                                             <h2 className="text-xl font-medium">Your Order</h2>
@@ -473,8 +502,9 @@ const CheckoutForm = () => {
                 </div>
             ) : ''}
 
+            <BigLoader isOpen={loadingPayment} text="Initializing Payment" />
             {/*	Show message if Order Sucess*/}
-            <OrderSuccess response={checkoutResponse} />
+            <OrderSuccess response={checkoutResponse} setLoadingPayment ={setLoadingPayment} />
         </>
     );
 };

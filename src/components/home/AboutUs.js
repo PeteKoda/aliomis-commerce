@@ -1,7 +1,6 @@
 import { isEmpty, isArray } from 'lodash';
 import Image from 'next/image'
 import Link from "next/link";
-import { useState, useEffect, useRef } from 'react';
 
 const AboutUs = ({ data }) => {
 
@@ -13,7 +12,7 @@ const AboutUs = ({ data }) => {
         <div className="text-center lg:text-left px-4" style={{ backgroundColor: "#9db97b" }}>
             <div className="relative flex flex-wrap items-center justify-center py-20 lg:py-32 container mx-auto">
                 <div className=" w-full lg:w-1/2">
-                    <div>
+                    <div data-sal="slide-right" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back">
                         <Image
                             alt={data.image.altText}
                             src={data.image.sourceUrl}
@@ -24,7 +23,7 @@ const AboutUs = ({ data }) => {
                         />
                     </div>
                 </div>
-                <div className="w-full lg:w-1/2 flex items-end">
+                <div className="w-full lg:w-1/2 flex items-end" data-sal="slide-left" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back">
                     <div className="about-home-section mx-auto lg:mx-0">
                         <p className="ab-odd-p">{data.subTitle}</p>
                         <h2>{data.title}</h2>

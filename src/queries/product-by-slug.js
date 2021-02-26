@@ -160,11 +160,13 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 		price
 		id
 		regularPrice
+        stockQuantity
 	  }
 	  ... on VariableProduct {
 		price
 		id
 		regularPrice
+        stockQuantity
 	  }
 	  ... on ExternalProduct {
 		price

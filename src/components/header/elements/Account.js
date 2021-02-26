@@ -146,6 +146,11 @@ const Account = ({ className, isHidden, openHandler, closeHandler }) => {
                                             }
                                         </li>
                                     )
+                                }else {
+                                    if(loggedUser && loggedUser !== "" && !loggedUser.customer){
+                                        setLoggedUser("")
+                                        // alert("mesa")
+                                    }
                                 }
                             })}
 

@@ -7,7 +7,7 @@ const EmptyCart = () => {
                 <span className="tt-icon icon-f-39"/>
                 <h1 className="tt-title">SHOPPING CART IS EMPTY</h1>
                 <p>You have no items in your shopping cart.</p>
-                <Link href="/shop"><a className="btn">CONTINUE SHOPPING</a></Link>
+                <Link href="/"><a className="btn">CONTINUE SHOPPING</a></Link>
             </div>
         </div>
     );

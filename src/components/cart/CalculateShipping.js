@@ -6,6 +6,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import APPLY_CUSTOMER_COUPON from "../../mutations/coupon";
 import REMOVE_CUSTOMER_COUPON from "../../mutations/remove-coupon";
 import Skeleton from 'react-loading-skeleton';
+import cogoToast from "cogo-toast";
+
 
 
 import { v4 } from "uuid";
@@ -30,11 +32,18 @@ const CalculateShipping = ({ cart, refetchCart, cartLoading }) => {
         },
         onCompleted: () => {
             refetchCart()
+            cogoToast.success('Coupon applied successfully.', {
+                position: 'bottom-right',
+                hideAfter: 3
+            })
         },
         onError: (error) => {
             if (error && error.graphQLErrors) {
                 console.log(error)
-                alert(error.graphQLErrors[0].message)
+                cogoToast.error('There was an error with the provided coupon.', {
+                    position: 'bottom-right',
+                    hideAfter: 3
+                })
                 // setRequestError( error.graphQLErrors[ 0 ].message );
             }
         }
@@ -145,7 +154,7 @@ const CalculateShipping = ({ cart, refetchCart, cartLoading }) => {
                         <tbody>
                             <tr>
                                 <th>APPLIED COUPON</th>
-                                <td style={{ color: "#2879fe" }}>
+                                <td style={{ color: "#839362" }}>
                                     <div className="flex w-full justify-between">
                                         <div>
                                             <div>{cart?.appliedCoupons?.nodes[0].code.toUpperCase()}</div>

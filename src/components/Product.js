@@ -14,15 +14,15 @@ const Product = (props) => {
         undefined !== product && 'GroupProduct' !== product.__typename ? (
             <div className="product mb-3">
                 <Link href={`/${product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
-                    <a className="relative block mx-auto" style={{width: props.customWidth ? props.customWidth : "180px", height: props.customHeight ? props.customHeight : "280px"}}>
+                    <a className="relative block mx-auto" style={{ width: props.customWidth ? props.customWidth : "180px", height: props.customHeight ? props.customHeight : "280px" }}>
                         {!isEmpty(product.image) ? (
                             <Image
                                 src={product.image.sourceUrl}
                                 alt="Product image"
                                 layout="fill"
                                 className={"object-cover"}
-                                // width={props.customWidth ? props.customWidth : 480}
-                                // height={props.customHeight ? props.customHeight : 480}
+                            // width={props.customWidth ? props.customWidth : 480}
+                            // height={props.customHeight ? props.customHeight : 480}
                             />
                             // <img src={product.image.sourceUrl} alt="Product image" />
                         ) : !isEmpty(clientConfig.productImagePlaceholder) ? (
@@ -63,7 +63,15 @@ const Product = (props) => {
 
                 { props.bttn && (
                     <div>
-                        <AddToCartButton product={product} classes={props.bttnClasses} />
+                        {
+                            !product?.stockQuantity
+                                ?
+                                <div className="block text-center">
+                                    Out Of Stock
+                                </div>
+                                :
+                                <AddToCartButton product={product} classes={props.bttnClasses} />
+                        }
                     </div>
                 )}
 

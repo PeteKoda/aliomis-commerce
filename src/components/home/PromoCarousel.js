@@ -18,7 +18,7 @@ const PromoCarousel = ({ bestSellers, offers, promo }) => {
         <div className="container py-20 m-auto px-4">
             <div className="flex flex-wrap items-center mb-20">
                 <div className="w-full lg:w-1/2 order-2 order-lg-1 pt-8 lg:pt-0">
-                    <div className="mr-auto ml-auto lg:mr-20" style={{ maxWidth: "468px" }}>
+                    <div data-sal="slide-right" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back" className="mr-auto ml-auto lg:mr-20" style={{ maxWidth: "468px" }}>
                         <Carousel
                             showThumbs={false}
                             showArrows={true}
@@ -32,7 +32,7 @@ const PromoCarousel = ({ bestSellers, offers, promo }) => {
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 order-1 order-lg-2">
-                    <div style={{ maxWidth: "610px" }}>
+                    <div data-sal="slide-left" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back" style={{ maxWidth: "610px" }}>
                         <Image
                             alt={promo.offersImage.altText}
                             src={promo.offersImage.sourceUrl}
@@ -46,7 +46,7 @@ const PromoCarousel = ({ bestSellers, offers, promo }) => {
             </div>
             <div className="flex flex-wrap items-center mb-20">
                 <div className="w-full lg:w-1/2">
-                    <div style={{ maxWidth: "610px" }}>
+                    <div style={{ maxWidth: "610px" }} data-sal="slide-right" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back">
                         <Image
                             alt={promo.bestSellersImage.altText}
                             src={promo.bestSellersImage.sourceUrl}
@@ -58,7 +58,7 @@ const PromoCarousel = ({ bestSellers, offers, promo }) => {
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 pt-8 lg:pt-0">
-                    <div className="mr-auto ml-auto lg:ml-20" style={{ maxWidth: "468px" }}>
+                    <div className="mr-auto ml-auto lg:ml-20" style={{ maxWidth: "468px" }} data-sal="slide-left" data-sal-delay="300" data-sal-duration="1000" data-sal-easing="ease-out-back">
                         <Carousel
                             showThumbs={false}
                             showArrows={true}

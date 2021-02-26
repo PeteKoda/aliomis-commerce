@@ -60,7 +60,7 @@ const Articles = ({ }) => {
                 </div>
                 <div className="flex flex-wrap container m-auto pt-8">
                     {(posts && posts.edges && posts.edges.length > 0) && posts.edges.map((post, i) => (
-                        <div className={`relative w-full md:w-1/3 px-4 md:pt-0 ${i !== 0 && ("pt-8")}`}>
+                        <div className={`relative w-full md:w-1/3 px-4 md:pt-0 ${i !== 0 && ("pt-8")}`} data-sal="slide-up" data-sal-delay={`"${(i+1) * 300}"`} data-sal-duration="500" data-sal-easing="ease-out-sine">
                             <a href={`https://blog.aliomis.com/${post.node.categories.edges[0].node.slug}/${post.node.slug}`}>
                                 <Image
                                     alt={post.node.featuredImage.altText}

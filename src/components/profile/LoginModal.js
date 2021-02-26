@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 import { useQuery, useMutation } from '@apollo/client';
 import { UserContext } from "../context/AppContext";
 import validator from 'validator';
+import cogoToast from "cogo-toast";
 
 import LOG_IN_USER from "../../mutations/login";
 import REGISTER_USER from "../../mutations/register-user";
@@ -59,6 +60,18 @@ const LoginModal = (props) => {
         },
         onError: (error) => {
             if (error) {
+                if(error.graphQLErrors[ 0 ].message === "invalid_email"){
+                    cogoToast.error( "The email is not valid." , {
+                        position: 'top-center',
+                        hideAfter: 3
+                    })
+                }else if(error.graphQLErrors[ 0 ].message === "incorrect_password"){
+                    cogoToast.error( "The password is incorrect." , {
+                        position: 'top-center',
+                        hideAfter: 3
+                    })
+                }
+                
                 setRequestError(error.graphQLErrors[0].message);
             }
         }
@@ -236,6 +249,9 @@ const LoginModal = (props) => {
                                     </div>
 
                                 </div>
+                                { requestError && (
+                                    <div className="register-error" dangerouslySetInnerHTML={{__html: requestError}} />
+                                )}
                             </form>
                         )}
 

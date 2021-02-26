@@ -13,7 +13,7 @@ import IntroBanner from "../src/components/home/IntroBanner";
 import AboutUs from "../src/components/home/AboutUs";
 import Featured from "../src/components/home/Featured";
 import Clients from "../src/components/home/Clients";
-import Articles from "../src/components/home/Articles";
+// import Articles from "../src/components/home/Articles";
 
 export default function Home (props) {
 

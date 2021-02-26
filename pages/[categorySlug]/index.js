@@ -843,7 +843,7 @@ export default function CategorySingle(props) {
 
 
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center mt-5">
                             {pageInfos?.hasPreviousPage && (
                                 <button className="bttn-page-nav" onClick={() => goToPreviousPage()}>
                                     <img src="/chevron-right.svg" />

@@ -1,6 +1,6 @@
 import {isEmpty} from "lodash";
 
-const Price = ({ regularPrice = 0, salesPrice }) => {
+const Price = ({ regularPrice = 0, salesPrice , txtAlign}) => {
 
     if ( isEmpty( salesPrice ) ) {
     	return null;
@@ -31,7 +31,7 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
     const productMeta = discountPercent( regularPrice, salesPrice );
 
     return (
-        <h6 className="product-price text-gray-800 font-semibold mt-2 text-xl text-center mb-2">
+        <h6 className={`product-price text-gray-800 font-semibold mt-2 text-xl mb-2 ${txtAlign ? txtAlign : "text-center"}`} >
             {/* Regular price */}
             { productMeta?.discountPercent ? <span className="product-price mr-2">{salesPrice}</span> : null }
 
