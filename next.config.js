@@ -22,6 +22,6 @@ module.exports = {
         includePaths: [path.join(__dirname, "styles"), path.join(__dirname, 'assets/scss')],
     },
     images: {
-        domains: ['w3.aliomis.com','aliomis-eshop.s3.amazonaws.com','admin.blog.aliomis.com'],
+        domains: ['aliomis.admin.w3vitals.com','aliomis-eshop.s3.amazonaws.com','admin.blog.aliomis.com'],
     },
 };

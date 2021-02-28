@@ -319,7 +319,7 @@ const Nav = (props) => {
                                 <a className="">
                                     <div className="hidden lg:block">
                                         <Image
-                                            src="https://w3.aliomis.com/wp-content/uploads/2021/01/logo.png"
+                                            src="https://aliomis.admin.w3vitals.com/wp-content/uploads/2021/01/logo.png"
                                             alt="Logo"
                                             width={100}
                                             height={122}
@@ -347,7 +347,7 @@ const Nav = (props) => {
                             <a className="">
                                 <div >
                                     <Image
-                                        src="https://w3.aliomis.com/wp-content/uploads/2021/01/logo.png"
+                                        src="https://aliomis.admin.w3vitals.com/wp-content/uploads/2021/01/logo.png"
                                         alt="Logo"
                                         width={100}
                                         height={122}

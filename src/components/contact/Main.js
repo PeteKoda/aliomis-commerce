@@ -35,7 +35,7 @@ const Main = ({ data }) => {
 
                 if (user.name && user.email && user.message) {
                     setErrorMessage("")
-                    axios.post(`https://w3.aliomis.com/wp-json/myplugin/v1/contactEmail`, user)
+                    axios.post(`https://aliomis.admin.w3vitals.com/wp-json/myplugin/v1/contactEmail`, user)
                         .then(function (response) {
                             setEmailResponse(response.data)
                             setLoading(false)
