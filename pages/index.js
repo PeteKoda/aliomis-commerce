@@ -42,7 +42,7 @@ export default function Home (props) {
                 </section>
                 <section>
                     <div className="text-center py-8" style={{backgroundColor:"#bdced3",color: "#ffffff",fontSize: "37px",fontWeight:"200",fontStyle: "italic"}}>
-                        Free Shipping On $75+
+                        Livraison offerte à partir de 75€
                     </div>
                 </section>
                 <section>

@@ -142,7 +142,7 @@ const AddToCart = (props) => {
                             </div></div>
                         </button>
                         :
-                        <button onClick={handleAddToCartClick} className={`bttn-default ${props.classes} mx-auto`}>Add to cart</button>
+                        <button onClick={handleAddToCartClick} className={`bttn-default ${props.classes} mx-auto`}>Ajouter au panier</button>
                 )
 
             }

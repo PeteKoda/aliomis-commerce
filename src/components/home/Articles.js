@@ -75,7 +75,7 @@ const Articles = ({ }) => {
                                 <div className="article-excerpt" dangerouslySetInnerHTML={{ __html: post.node.excerpt }} />
                                 <div>
                                     <a className="text-black mt-4 relative" style={{top:"10px"}}>
-                                        Read More
+                                        Lire la suite
                                     </a>    
                                 </div>
                             </a>

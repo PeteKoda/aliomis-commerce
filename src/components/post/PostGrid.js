@@ -35,7 +35,7 @@ const PostGrid = ({ slug, title, excerpt, thumb, categories, date, altText }) =>
                 <div>
                     <Link href={`${slug}`}>
                         <a className="text-black mt-4 relative" style={{ top: "10px" }}>
-                            Read More
+                            Lire la suite
                         </a>
                     </Link>
                 </div>

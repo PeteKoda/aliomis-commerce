@@ -15,7 +15,7 @@ const YourOrder = ({ cart, cartLoading, shippingMethodLoading }) => {
                             <tr className="woo-next-cart-head-container text-left">
                                 <th className="woo-next-cart-heading-el" scope="col" />
                                 <th className="woo-next-cart-heading-el" scope="col">Product</th>
-                                <th className="woo-next-cart-heading-el" scope="col">Price</th>
+                                <th className="woo-next-cart-heading-el" scope="col">Prix</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -72,7 +72,7 @@ const Main = ({ data }) => {
                         <div>
                             <div className="flex">
                                 <div className="w-1/2 mr-4">
-                                    <input style={{ outline: "none" }} className="shadow appearance-none border w-full py-2 px-3 text-grey-darker" value={user.name} onChange={handleChange} name="name" id="name" type="text" placeholder="Name" />
+                                    <input style={{ outline: "none" }} className="shadow appearance-none border w-full py-2 px-3 text-grey-darker" value={user.name} onChange={handleChange} name="name" id="name" type="text" placeholder="Nom" />
                                 </div>
 
                                 <div className="w-1/2 ml-4">
@@ -83,7 +83,7 @@ const Main = ({ data }) => {
                                 className="shadow appearance-none border w-full py-2 px-3 text-grey-darker mt-8"
                                 rows="6"
                                 cols="50"
-                                placeholder="Comments"
+                                placeholder="Commentaires"
                                 name="message"
                                 value={user.message}
                                 onChange={handleChange}

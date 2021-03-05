@@ -272,7 +272,7 @@ const Nav = (props) => {
                     <div className="hidden lg:block w-1/3 relative">
                         <div className="mb-8 flex">
                             <img src="/search.svg" onClick={() => addBrandFilter(searchIn, "", "search", "")} className={"pb-1 pr-1"} style={{ borderBottom: "1px solid lightgrey" }} />
-                            <input type="text" value={searchIn} onKeyPress={onChangeSearch} onChange={(e) => setSearchIn(e.target.value)} placeholder="Search" className="search-input" />
+                            <input type="text" value={searchIn} onKeyPress={onChangeSearch} onChange={(e) => setSearchIn(e.target.value)} placeholder="Rechercher" className="search-input" />
                         </div>
                         {
                             searchLoading

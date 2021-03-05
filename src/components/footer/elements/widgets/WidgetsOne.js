@@ -16,7 +16,7 @@ const WidgetsOne = ({ className, productCategories }) => {
             <Container>
                 <Row>
                     <Col md={6} lg={2} xl={3}>
-                        <Widget title="ABOUT US">
+                        <Widget title="À Propos">
                             <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor
                             ut labore et dolore. Lorem ipsum dolor amet conse ctetur
                                 adipisicing elit, sedo eiusmod tempor incididunt ut labore etdolore. </p>
@@ -24,7 +24,7 @@ const WidgetsOne = ({ className, productCategories }) => {
                     </Col>
 
                     <Col md={6} lg={2} xl={3}>
-                        <Widget title="GENERAL">
+                        <Widget title="Général">
                             <ul className="tt-list">
                                 {footerGeneralData.map(item => (
                                     <li key={item.id}>
@@ -38,7 +38,7 @@ const WidgetsOne = ({ className, productCategories }) => {
                     </Col>
 
                     <Col md={6} lg={2} xl={3}>
-                        <Widget title="CATEGORIES">
+                        <Widget title="Catégories">
                             <ul className="tt-list">
                                 {productCategories.map((productCategory, i) => (
                                     <li key={productCategory.id + i}>
@@ -54,10 +54,10 @@ const WidgetsOne = ({ className, productCategories }) => {
                     <Col md={6} lg={2} xl={3}>
                         <Widget title="CONTACT">
                             <address>
-                                <p><span>Address:</span> 2548 Broaddus Maple Court Avenue, Madisonville KY 4783, USA</p>
-                                <p><span>Phone:</span> +777 2345 7885; +777 2345 7886</p>
-                                <p><span>Hours:</span> 7 Days a week from 10 am to 6 pm</p>
-                                <p><span>E-mail:</span> <Link href="mailto:info@mydomain.com">info@mydomain.com</Link>
+                                <p><span>Adresse:</span> 7 Rue des Bouchers, 67000 Strasbourg - France</p>
+                                <p><span>Téléphone:</span> +03 88 83 32 34</p>
+                                <p><span>Horaires d’ouverture:</span> Mardi au Vendredi: 10h00 - 19h30, Samedi: 10h00 - 19h00</p>
+                                <p><span>E-mail:</span> <Link href="mailto:info@mydomain.com">info@aliomis.com</Link>
                                 </p>
                             </address>
                         </Widget>

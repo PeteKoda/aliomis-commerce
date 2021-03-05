@@ -187,29 +187,29 @@ const LoginModal = (props) => {
 
                         <div className="flex">
                             <div onClick={() => setActiveForm(1)} className="w-1/2 text-center py-4 cursor-pointer" style={activeForm === 2 ? { backgroundColor: "#f4f2f2" } : { backgroundColor: "initial" }}>
-                                <h1 className="text-center text-xl text-black ">Login</h1>
+                                <h1 className="text-center text-xl text-black ">Se connecter</h1>
                             </div>
                             <div onClick={() => setActiveForm(2)} className="w-1/2 text-center py-4 cursor-pointer" style={activeForm === 1 ? { backgroundColor: "#f4f2f2" } : { backgroundColor: "initial" }}>
-                                <h1 className="text-center text-xl text-black">Register</h1>
+                                <h1 className="text-center text-xl text-black">Créer son compte</h1>
                             </div>
                         </div>
 
                         {activeForm === 1 && (
                             <form onSubmit={handleSubmit} className="pt-6 pb-2 p-8" >
                                 <div className="mb-6">
-                                    <input style={{ outline: "none" }} className="shadow appearance-none border w-full py-2 px-3 text-grey-darker" value={user.email} onChange={handleChange} name="email" id="email" type="text" placeholder="Email Address" />
+                                    <input style={{ outline: "none" }} className="shadow appearance-none border w-full py-2 px-3 text-grey-darker" value={user.email} onChange={handleChange} name="email" id="email" type="text" placeholder="Adresse email" />
                                 </div>
                                 <div className="mb-6">
-                                    <input style={{ outline: "none" }} className="shadow appearance-none border w-full py-2 px-3 text-grey-darker mb-3" value={user.password} onChange={handleChange} name="password" id="password" type="password" placeholder="Password" />
+                                    <input style={{ outline: "none" }} className="shadow appearance-none border w-full py-2 px-3 text-grey-darker mb-3" value={user.password} onChange={handleChange} name="password" id="password" type="password" placeholder="Mot de passe" />
                                 </div>
                                 <div className="block md:flex items-center justify-between pb-4">
                                     <div className="mt-4 md:mt-0">
-                                        <a href="#" className="text-green no-underline">Lost your Password?</a>
+                                        <a href="#" className="text-green no-underline">Mot de passe oublié ?</a>
                                     </div>
                                     <div>
                                         <button
                                             className="bttn-default text-black">
-                                            Sign In
+                                                Connexion
                                         </button>
 
                                         {logingInLoading && <p>Adding to Cart...</p>}
@@ -245,7 +245,7 @@ const LoginModal = (props) => {
                                             className="bttn-default text-black">
                                             Register
                                         </button>
-                                        {logingInLoading && <p>Adding to Cart...</p>}
+                                        {logingInLoading && <p>De liaison...</p>}
                                     </div>
 
                                 </div>

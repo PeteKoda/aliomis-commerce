@@ -703,7 +703,7 @@ export default function CategorySingle(props) {
                     <div className=" w-full md:w-1/4 hidden md:block">
                         <div className="mb-8 flex">
                             <img src="/search.svg" onClick={() => addBrandFilter(searchIn, "", "search", "")} className={"pb-1 pr-1"} style={{ borderBottom: "1px solid lightgrey" }} />
-                            <input type="text" value={searchIn} onKeyPress={onChangeSearch} onChange={(e) => setSearchIn(e.target.value)} placeholder="Search" className="search-input" />
+                            <input type="text" value={searchIn} onKeyPress={onChangeSearch} onChange={(e) => setSearchIn(e.target.value)} placeholder="Rechercher" className="search-input" />
                         </div>
                         <div>
                             <h3 className="categories-filter">CATEGORIES</h3>
@@ -787,7 +787,7 @@ export default function CategorySingle(props) {
                         )}
 
                         <div className="mt-8" style={{ maxWidth: "195px" }}>
-                            <h3 className="categories-filter mb-6">Price</h3>
+                            <h3 className="categories-filter mb-6">Prix</h3>
 
                             <InputRange
                                 maxValue={(categoryAcf && categoryAcf.priceRange.priceMax) ? categoryAcf.priceRange.priceMax : 100}
@@ -959,7 +959,7 @@ export default function CategorySingle(props) {
                         )}
 
                         <div className="mt-8 pt-4" style={{ borderTop: "1px solid lightgrey" }}>
-                            <h3 className="categories-filter mb-6">Price</h3>
+                            <h3 className="categories-filter mb-6">Prix</h3>
 
                             <InputRange
                                 maxValue={(categoryAcf && categoryAcf.priceRange.priceMax) ? categoryAcf.priceRange.priceMax : 100}

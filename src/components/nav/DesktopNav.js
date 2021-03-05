@@ -80,7 +80,7 @@ const DesktopNav = ({ className, productCategories }) => {
                                             <div className={`col-sm-${navItem?.mega_menu ? 3 : 12}`}>
                                                 <h6 className="tt-title-submenu">
                                                     <Link href="/">
-                                                        <span>Shop Categories</span>
+                                                        <span>Catégories</span>
                                                     </Link>
                                                 </h6>
                                                 <ul className="tt-megamenu-submenu">
