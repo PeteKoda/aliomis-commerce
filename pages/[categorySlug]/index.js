@@ -38,6 +38,7 @@ const customStyles = {
 };
 
 const options = [
+    { value: 'POPULAR', label: 'Popular' },
     { value: 'DATE', label: 'Latest' },
     { value: 'PRICE', label: 'Price Ascending' },
     { value: 'PRICE2', label: 'Price Descending' },
@@ -321,8 +322,8 @@ export default function CategorySingle(props) {
                 categorySlug: categorySlug ? categorySlug : null,
                 startPoint: startPoint ? startPoint : "",
                 endPoint: endPoint ? endPoint : "",
-                first: (endPoint || !startPoint) ? 6 : null,
-                last: startPoint ? 6 : null,
+                first: (endPoint || !startPoint) ? 24 : null,
+                last: startPoint ? 24 : null,
                 field: field ? field : `DATE`,
                 order: order ? getListOrder(order, startPoint) : (startPoint ? `ASC` : `DESC`),
                 search: search ? search : ""
@@ -680,8 +681,10 @@ export default function CategorySingle(props) {
         setSelectInputOption({ ...selectedOption })
 
         setOrder(selectedOption.value)
-
-        if (selectedOption.value === "DATE") {
+        if (selectedOption.value === "POPULAR") {
+            addBrandFilter({ order: "ASC", field: "MENU_ORDER" }, "", "order", "")
+        }
+        else if (selectedOption.value === "DATE") {
             addBrandFilter({ order: "DESC", field: "DATE" }, "", "order", "")
         } else if (selectedOption.value === "PRICE") {
             addBrandFilter({ order: "ASC", field: "PRICE" }, "", "order", "")

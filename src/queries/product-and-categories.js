@@ -4,7 +4,7 @@ import { gql } from "@apollo/client";
  * GraphQL categories and products query.
  */
 const PRODUCTS_AND_CATEGORIES_QUERY = gql`query {
-  productCategories(first: 100) {
+  productCategories(first: 100 , where: {orderby:TERM_ORDER ,exclude: [15]}) {
     nodes {
       id
       name

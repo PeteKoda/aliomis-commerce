@@ -33,7 +33,7 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
             name
         }
       }
-	  products(first: 6, where: {orderby: {field: DATE, order: DESC}}) {
+	  products(first: 24, where: {orderby: {field: MENU_ORDER, order: ASC}}) {
         pageInfo {
             startCursor
             endCursor
