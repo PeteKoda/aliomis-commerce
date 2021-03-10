@@ -1,5 +1,5 @@
 import { isEmpty, isArray } from 'lodash';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import InnerImageZoom from 'react-inner-image-zoom';
 import Image from 'next/image'
 
@@ -14,6 +14,10 @@ const GalleryCarousel = ({ gallery }) => {
     }
 
     const [activeImg, setActiveImg] = useState(gallery[0])
+
+    useEffect(()=> {
+        setActiveImg(gallery[0])
+    },[gallery])
 
     function changePreview (item, i){
         setActiveImg(item)

@@ -161,6 +161,7 @@ export default function CategorySingle(props) {
 
         if (!search) {
             setProductsList(props.products)
+            setPriceVal({ min: (categoryAcf && categoryAcf.priceRange.priceMin) ? parseFloat(categoryAcf.priceRange.priceMin) : 0, max: (categoryAcf && categoryAcf.priceRange.priceMax) ? parseFloat(categoryAcf.priceRange.priceMax) : 100 })
             setPageInfos(props.pageInfo)
         } else {
             addBrandFilter()
