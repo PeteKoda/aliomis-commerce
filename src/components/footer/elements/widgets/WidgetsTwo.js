@@ -5,14 +5,10 @@ import {toCapitalize} from "@utils/toCapitalize";
 import accountData from "@data/account-menu.json";
 import {arrSortByCharacter} from "@utils/method";
 import {Col, Container, Row} from "react-bootstrap";
-import {ProductsContext} from "@global/ProductsContext";
-import {getProductsUniqueCategories} from "@utils/product";
 import NewsletterForm from "@components/newsletter/elements/Form";
 import SocialIcons from "@components/newsletter/elements/Icons";
 
 const WidgetsTwo = ({className, dark}) => {
-    const {products} = useContext(ProductsContext);
-    const cats = getProductsUniqueCategories(products, 6);
     const categories = arrSortByCharacter(cats);
 
     return (

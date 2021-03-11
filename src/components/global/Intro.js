@@ -1,7 +1,6 @@
-import { isEmpty, isArray } from 'lodash';
+import isEmpty from "lodash/isEmpty";
 import {useEffect} from "react"
 import Image from 'next/image'
-import Link from "next/link";
 import 'sal.js/dist/sal.css';
 import sal from 'sal.js'
 

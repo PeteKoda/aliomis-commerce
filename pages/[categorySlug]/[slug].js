@@ -7,7 +7,7 @@ import { PRODUCT_BY_SLUG_QUERY, PRODUCT_SLUGS } from '../../src/queries/product-
 import PRODUCTS_AND_CATEGORIES_QUERY from "../../src/queries/product-and-categories";
 import Breadcrumb from "@components/breadcrumb";
 
-import { isEmpty } from 'lodash';
+import isEmpty from "lodash/isEmpty";
 import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
 import Price from "../../src/components/single-product/price";
 import ProductView from "../../src/components/Product";
@@ -112,11 +112,11 @@ export default function Product(props) {
 
                     <div className="pb-12 pt-20">
                         <div className="flex flex-wrap w-full justify-center" style={{ borderBottom: "1px solid lightgray" }}>
-                            <div onClick={() => changeTab(1, product?.description)} className={`pb-2 w-full pt-4 md:pt-0 md:w-auto mr-8 pr-tab cursor-pointer ${activeTab === 1 && ("pr-tab-selected")}`}>DESCRIPTION</div>
+                            <div onClick={() => changeTab(1, product?.description)} className={`pb-2 w-full pt-4 md:pt-0 md:w-auto mr-8 pr-tab cursor-pointer ${activeTab === 1 && ("pr-tab-selected")}`}>Description</div>
                             {product?.brands?.edges.length > 0 && (
-                                <div onClick={() => changeTab(2, product?.brands?.edges[0].node.description)} className={`pb-2 pt-4 md:pt-0 w-full md:w-auto mr-8 pr-tab cursor-pointer ${activeTab === 2 && ("pr-tab-selected")}`}>PRODUCER</div>
+                                <div onClick={() => changeTab(2, product?.brands?.edges[0].node.description)} className={`pb-2 pt-4 md:pt-0 w-full md:w-auto mr-8 pr-tab cursor-pointer ${activeTab === 2 && ("pr-tab-selected")}`}>Producteur</div>
                             )}
-                            <div onClick={() => changeTab(3, "<p></p>")} className={`pb-2 w-full pt-4 md:pt-0 md:w-auto mr-8 pr-tab cursor-pointer ${activeTab === 3 && ("pr-tab-selected")}`}>ADDITIONAL INFORMATION</div>
+                            <div onClick={() => changeTab(3, "<p></p>")} className={`pb-2 w-full pt-4 md:pt-0 md:w-auto mr-8 pr-tab cursor-pointer ${activeTab === 3 && ("pr-tab-selected")}`}>Informations supplémentaires</div>
                         </div>
                         {activeTab === 3 && (
                             <div className="flex overflow-auto">
@@ -157,7 +157,7 @@ export default function Product(props) {
                     )}
                     <div className="py-12">
                         <div>
-                            <h2 className="product-h1 text-center mb-10 w-full" style={{ fontSize: "29px", letterSpacing: ".2em" }}>RELATED PRODUCTS</h2>
+                            <h2 className="product-h1 text-center mb-10 w-full" style={{ fontSize: "29px", letterSpacing: ".2em" }}>Vous aimerez aussi</h2>
                         </div>
                         <div className="product-categories flex flex-wrap justify-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8 relative">
                             {(undefined !== product.related.edges) && product.related.edges?.length && (

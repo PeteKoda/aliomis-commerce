@@ -28,7 +28,7 @@ const Breadcrumb = () => {
         <div className="tt-breadcrumb">
             <div className="container">
                 <ul>
-                    <li><Link href="/"><a>Home</a></Link></li>
+                    <li><Link href="/"><a>Menu</a></Link></li>
                     {breadcrumbs.map((breadcrumb, i) => (
                         breadcrumbs.length !== (i + 1) ? (
                             <li key={breadcrumb.breadcrumb}>

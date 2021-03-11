@@ -8,7 +8,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import UPDATE_CART from "../../../mutations/update-cart";
 import GET_CART from "../../../queries/get-cart";
 import CLEAR_CART_MUTATION from "../../../mutations/clear-cart";
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash/isEmpty'
 import Skeleton from 'react-loading-skeleton';
 
 

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import AddToCartButton from '../cart/AddToCartButton';
 import clientConfig from '../../../client-config';
 import Image from 'next/image'
-import { isEmpty } from 'lodash';
+import isEmpty from "lodash/isEmpty";
 
 import { useState, Fragment } from "react";
 

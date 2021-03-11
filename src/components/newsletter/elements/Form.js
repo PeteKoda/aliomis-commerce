@@ -6,9 +6,9 @@ const NewsletterForm = ({className}) => {
                     type="text"
                     name="email"
                     className="form-control"
-                    placeholder="Entrer votre email"
+                    placeholder="Entrez votre email"
                 />
-                <button type="submit" className="btn" style={{whiteSpace: 'nowrap'}}>JOIN US</button>
+                <button type="submit" className="btn" style={{whiteSpace: 'nowrap'}}>REJOINS NOUS</button>
             </div>
         </form>
     );

@@ -6,10 +6,8 @@ import footerGeneralData from "@data/footer-general.json";
 import { arrSortByCharacter } from "@utils/method";
 import { Col, Container, Row } from "react-bootstrap";
 import { getProductsUniqueCategories } from "@utils/product";
-import { ProductsContext } from "@global/ProductsContext";
 
 const WidgetsOne = ({ className, productCategories }) => {
-    const { products } = useContext(ProductsContext);
 
     return (
         <div className={`tt-footer-col tt-color-scheme-01 ${className ? className : ''}`}>
@@ -55,7 +53,7 @@ const WidgetsOne = ({ className, productCategories }) => {
                         <Widget title="CONTACT">
                             <address>
                                 <p><span>Adresse:</span> 7 Rue des Bouchers, 67000 Strasbourg - France</p>
-                                <p><span>Téléphone:</span> +03 88 83 32 34</p>
+                                <p><span>Téléphone:</span> 03 88 83 32 34</p>
                                 <p><span>Horaires d’ouverture:</span> Mardi au Vendredi: 10h00 - 19h30, Samedi: 10h00 - 19h00</p>
                                 <p><span>E-mail:</span> <Link href="mailto:info@mydomain.com">info@aliomis.com</Link>
                                 </p>

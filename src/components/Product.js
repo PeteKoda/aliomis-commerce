@@ -2,7 +2,7 @@ import Link from 'next/link';
 import AddToCartButton from '../components/cart/AddToCartButton';
 import clientConfig from '../../client-config';
 import Image from 'next/image'
-import { isEmpty } from 'lodash';
+import isEmpty from "lodash/isEmpty";
 import Price from "./single-product/price";
 
 
@@ -45,6 +45,7 @@ const Product = (props) => {
                                             layout="fixed"
                                             width={40}
                                             height={40}
+                                            quality={50}
                                         />
                                     </div>
                                 ))}

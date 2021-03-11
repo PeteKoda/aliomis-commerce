@@ -1,4 +1,4 @@
-import { isEmpty, isArray } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import Image from 'next/image'
 import Link from "next/link";
 

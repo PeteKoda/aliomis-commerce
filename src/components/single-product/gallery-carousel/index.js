@@ -1,4 +1,6 @@
-import { isEmpty, isArray } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import isArray from 'lodash/isArray';
+
 import { useState, useRef, useEffect } from 'react';
 import InnerImageZoom from 'react-inner-image-zoom';
 import Image from 'next/image'

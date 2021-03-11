@@ -1,4 +1,4 @@
-import {isEmpty} from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 const Price = ({ regularPrice = 0, salesPrice , txtAlign}) => {
 

@@ -58,7 +58,7 @@ const LatestBlog = ({ blogs }) => {
         <div className="container-indent">
             <Container>
                 <SectionTitle
-                    title="LATEST FROM BLOG"
+                    title="Les dernières infos du blog"
                     content="THE FRESHEST AND MOST EXCITING NEWS"
                 />
 

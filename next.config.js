@@ -1,14 +1,29 @@
 
 const path = require("path");
-module.exports = {
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
+const withPreact = require('next-plugin-preact');
+
+
+module.exports = withPreact({
     trailingSlash: true,
-    webpack(config) {
+    
+    webpack(config, { buildId, dev, isServer, defaultLoaders, webpack }) {
         config.module.rules.push({
             test: /\.svg$/,
             use: ["@svgr/webpack"]
         });
 
-        return config;
+        config.plugins.push(
+            new BundleAnalyzerPlugin({
+                analyzerMode: 'server',
+                analyzerPort: isServer ? 8888 : 8889,
+                openAnalyzer: true,
+            })
+        )
+
+
+        return config
     },
     webpackDevMiddleware: (config) => {
         config.watchOptions = {
@@ -22,6 +37,6 @@ module.exports = {
         includePaths: [path.join(__dirname, "styles"), path.join(__dirname, 'assets/scss')],
     },
     images: {
-        domains: ['aliomis.admin.w3vitals.com','aliomis-eshop.s3.amazonaws.com','admin.blog.aliomis.com','i2.wp.com','i1.wp.com','i0.wp.com'],
+        domains: ['aliomis.admin.w3vitals.com', 'aliomis-eshop.s3.amazonaws.com', 'admin.blog.aliomis.com', 'i2.wp.com', 'i1.wp.com', 'i0.wp.com'],
     },
-};
+});

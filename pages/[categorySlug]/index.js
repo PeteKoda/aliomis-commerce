@@ -16,7 +16,8 @@ import Breadcrumb from "@components/breadcrumb";
 
 import GET_CATEGORIES_QUERY from "../../src/queries/get-categories";
 
-import { isEmpty, stubTrue } from "lodash";
+import isEmpty from "lodash/isEmpty";
+
 import { useRouter } from "next/router";
 
 import { useState, useEffect } from "react";
@@ -38,11 +39,11 @@ const customStyles = {
 };
 
 const options = [
-    { value: 'POPULAR', label: 'Popular' },
-    { value: 'DATE', label: 'Latest' },
-    { value: 'PRICE', label: 'Price Ascending' },
-    { value: 'PRICE2', label: 'Price Descending' },
-    { value: 'TOTAL_SALES', label: 'Best Sellers' }
+    { value: 'POPULAR', label: 'Populaire' },
+    { value: 'DATE', label: 'Nouveautés ' },
+    { value: 'PRICE', label: 'Prix croissant' },
+    { value: 'PRICE2', label: 'Prix décroissant' },
+    { value: 'TOTAL_SALES', label: 'Meilleures ventes' }
 ]
 
 // const dot = (color = '#ccc') => ({
@@ -766,7 +767,7 @@ export default function CategorySingle(props) {
 
                         {(categoryAcf.categoryBrands && categoryAcf.categoryBrands.length > 0) && (
                             <div className="mt-8">
-                                <h3 className="categories-filter">Brands</h3>
+                                <h3 className="categories-filter">Producteurs</h3>
                                 <div className="mt-2">
                                     {categoryAcf.categoryBrands.map((tag, i) => (
                                         <div onClick={() => addBrandFilter(tag.name, i, "terms", "brand-li")} key={`brand-${i}`} className="filter-cat-li brand-li">
@@ -803,7 +804,7 @@ export default function CategorySingle(props) {
                             />
 
 
-                            <button className="bttn-default mt-8 ml-auto mr-auto" onClick={() => addBrandFilter(priceVal, "", "price", "price-li")}>Apply</button>
+                            <button className="bttn-default mt-8 ml-auto mr-auto" onClick={() => addBrandFilter(priceVal, "", "price", "price-li")}>Appliquer</button>
                         </div>
 
                     </div>
@@ -974,7 +975,7 @@ export default function CategorySingle(props) {
                         </div>
                     </div>
                     <div>
-                        <button className="bttn-default mt-8 ml-auto mr-auto" onClick={() => applyFilterChanges()}>Apply</button>
+                        <button className="bttn-default mt-8 ml-auto mr-auto" onClick={() => applyFilterChanges()}>Appliquer</button>
                     </div>
                 </div>
             </Modal>

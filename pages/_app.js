@@ -9,8 +9,7 @@ import Head from "next/head";
 import { Fragment } from "react"
 
 import CartContextProvider from "@global/CartContext";
-import CompareContextProvider from "@global/CompareContext";
-import ProductsContextProvider from "@global/ProductsContext";
+// import CompareContextProvider from "@global/CompareContext";
 import WishlistContextProvider from "@global/WishlistContext";
 
 import NProgress from 'nprogress';
@@ -30,13 +29,9 @@ function MyApp({ Component, pageProps }) {
             </Head>
             
             <CartContextProvider>
-                <CompareContextProvider>
                     <WishlistContextProvider>
-                        <ProductsContextProvider>
                             <Component {...pageProps}/>
-                        </ProductsContextProvider>
                     </WishlistContextProvider>
-                </CompareContextProvider>
             </CartContextProvider>
         </Fragment>
     )

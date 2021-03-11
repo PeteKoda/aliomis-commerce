@@ -11,7 +11,7 @@ const NewsletterOne = () => {
                             <div className="tt-newsletter">
                                 <div className="tt-mobile-collapse">
                                     <h4 className="tt-collapse-title">
-                                        BE IN TOUCH WITH US:
+                                        Restez en contact avec nous
                                     </h4>
                                     <div className="tt-collapse-content">
                                         <NewsletterForm/>

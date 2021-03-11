@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import isEmpty from "lodash/isEmpty";
 import Link from "next/link";
 import Image from 'next/image'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader

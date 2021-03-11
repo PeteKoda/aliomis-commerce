@@ -1,10 +1,7 @@
-import { isEmpty, isArray } from 'lodash';
-import Image from 'next/image'
-import Link from "next/link";
+import isEmpty from 'lodash/isEmpty';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState, useEffect, useRef } from 'react';
 import Product from "./Product"
 
 const settings = {

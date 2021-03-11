@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import isEmpty from "lodash/isEmpty";
 import { useState, useEffect } from 'react';
 import axios from "axios"
 import 'sal.js/dist/sal.css';
@@ -89,7 +89,7 @@ const Main = ({ data }) => {
                                 onChange={handleChange}
                             />
                             {!loading ?
-                                <button onClick={contactMessage} className="bttn-default ml-auto">Send</button>
+                                <button onClick={contactMessage} className="bttn-default ml-auto">Envoyer</button>
                                 :
                                 <button className="bttn-default ml-auto">Loading</button>
                             }
