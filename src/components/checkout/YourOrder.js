@@ -14,7 +14,7 @@ const YourOrder = ({ cart, cartLoading, shippingMethodLoading }) => {
                         <thead>
                             <tr className="woo-next-cart-head-container text-left">
                                 <th className="woo-next-cart-heading-el" scope="col" />
-                                <th className="woo-next-cart-heading-el" scope="col">Product</th>
+                                <th className="woo-next-cart-heading-el" scope="col">Produit</th>
                                 <th className="woo-next-cart-heading-el" scope="col">Prix</th>
                             </tr>
                         </thead>
@@ -30,17 +30,17 @@ const YourOrder = ({ cart, cartLoading, shippingMethodLoading }) => {
                                     ?
                                     <React.Fragment>
                                         <tr style={{ borderBottom: "0" }}>
-                                            <td className="woo-next-checkout-total font-normal text-md">Shipping Price:</td>
+                                            <td className="woo-next-checkout-total font-normal text-md">Coût livraison:</td>
                                             <td className="" />
                                             <td className="woo-next-checkout-total font-bold text-md"><Skeleton height={20} width={50} /></td>
                                         </tr>
                                         <tr>
-                                            <td className="woo-next-checkout-total font-normal text-md">Subtotal:</td>
+                                            <td className="woo-next-checkout-total font-normal text-md">Sous-total:</td>
                                             <td className="" />
                                             <td className="woo-next-checkout-total font-bold text-md"><Skeleton height={20} width={50} /></td>
                                         </tr>
                                         <tr className="bg-gray-200">
-                                            <td className="woo-next-checkout-total font-normal text-xl" style={{ paddingLeft: "0.5rem", color: "black", fontWeight: "600" }}>Total Price</td>
+                                            <td className="woo-next-checkout-total font-normal text-xl" style={{ paddingLeft: "0.5rem", color: "black", fontWeight: "600" }}>Prix total TTC</td>
                                             <td className="" />
                                             <td className="woo-next-checkout-total font-bold text-xl mr-2" style={{ paddingRight: "0.5rem", color: "black", fontWeight: "600" }}><Skeleton height={20} width={50} /></td>
                                         </tr>
@@ -48,7 +48,7 @@ const YourOrder = ({ cart, cartLoading, shippingMethodLoading }) => {
                                     :
                                     <React.Fragment>
                                         <tr style={{ borderBottom: "0" }}>
-                                            <td className="woo-next-checkout-total font-normal text-md">Shipping Price:</td>
+                                            <td className="woo-next-checkout-total font-normal text-md">Coût livraison:</td>
                                             <td className="" />
                                             <td className="woo-next-checkout-total font-bold text-md">{cart.shippingTotal ? cart.shippingTotal : "?"}</td>
                                         </tr>
@@ -58,7 +58,7 @@ const YourOrder = ({ cart, cartLoading, shippingMethodLoading }) => {
                                             <td className="woo-next-checkout-total font-bold text-md">{cart.subtotal}</td>
                                         </tr>
                                         <tr className="bg-gray-200">
-                                            <td className="woo-next-checkout-total font-normal text-xl" style={{ paddingLeft: "0.5rem", color: "black", fontWeight: "600" }}>Total Price</td>
+                                            <td className="woo-next-checkout-total font-normal text-xl" style={{ paddingLeft: "0.5rem", color: "black", fontWeight: "600" }}>Prix total TTC</td>
                                             <td className="" />
                                             <td className="woo-next-checkout-total font-bold text-xl mr-2" style={{ paddingRight: "0.5rem", color: "black", fontWeight: "600" }}>{cart.totalProductsPrice}</td>
                                         </tr>

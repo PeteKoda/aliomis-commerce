@@ -8,7 +8,7 @@
   },
   {
     "id": 2,
-    "text": "SHOP",
+    "text": "BOUTIQUE",
     "link": "#",
     "mega_menu": true,
     "promo": false
@@ -21,7 +21,7 @@
   },
   {
     "id": 4,
-    "text": "COMPANY",
+    "text": "À PROPOS",
     "link": "/company/",
     "submenu": false,
     "mega_menu": false,

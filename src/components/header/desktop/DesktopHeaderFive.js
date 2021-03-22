@@ -83,7 +83,7 @@ const DesktopHeaderFive = ({navbarAlignment, logoAlignment, containerFluid}) => 
                         </div>
 
                         <div className=" tt-parent-box">
-                            <Link href="/cart">
+                            <Link href="/panier">
                                 <a className="tt-obj-link tt-compare-wrapper"
                                    data-tooltip="Compare" data-tposition="bottom">
                                     <div className="tt-dropdown-toggle">

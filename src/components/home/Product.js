@@ -17,9 +17,9 @@ const Product = (props) => {
     return (
         // @TODO Need to handle Group products differently.
         undefined !== product && 'GroupProduct' !== product.__typename ? (
-            <div className="product pb-12" style={{ backgroundColor: "#f6f8fa" }} onMouseEnter={() => setPriceHovered(true)} onMouseLeave={() => setPriceHovered(false)}>
-                <Link href={`/${product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
-                    <a className="relative flex justify-center">
+            <div className="product pb-3" onMouseEnter={() => setPriceHovered(true)} onMouseLeave={() => setPriceHovered(false)}>
+                <Link href={`/${product?.productCategories?.edges[0].node?.slug === "boutique" ? product?.productCategories?.edges[1].node?.slug : product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
+                    <a className="relative flex justify-center m-auto" style={{ width: "220px", height: "220px" }}>
                         {!isEmpty(product.image) ? (
                             <Image
                                 src={product.image.sourceUrl}
@@ -49,22 +49,22 @@ const Product = (props) => {
                         </div> */}
                     </a>
                 </Link>
-                <div className="flex justify-between px-8">
+                <div className="px-8 mt-2">
                     <div>
                         <h3 className="promo-pr-name">
                             {product.name ? product.name : ''}
                         </h3>
-                        <h4 className="promo-pr-catname">
+                        <h4 className="promo-pr-catname pt-1">
                             {product.productCategories?.edges ? product.productCategories.edges[0].node.name : ''}
                         </h4>
                     </div>
                     <div className="relative">
-                        <div className={`flex flex-wrap justify-end ${!priceHovered ? "promo-ph" : "promo-pnh"}`}>
+                        <div className={`flex justify-center ${!priceHovered ? "promo-ph" : "promo-pnh"}`}>
                             <p style={{ color: "red", textDecoration: "line-through" }}>{product?.regularPrice}</p>
                             <p className="text-base pl-2">{product?.price}</p>
                         </div>
-                        <div className={`promo-adc ${priceHovered ? "promo-aph" : "promo-apnh"}`}>
-                            <AddToCartButton product={product} classes={"px-1 "} />
+                        <div className={`promo-adc w-full mt-3 ${priceHovered ? "promo-aph" : "promo-apnh"}`}>
+                            <AddToCartButton product={product} classes={"px-2 "} />
                         </div>
                     </div>
                 </div>

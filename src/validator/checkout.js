@@ -67,7 +67,7 @@ const validateAndSanitizeCheckoutForm = ( data ) => {
 		}
 
 		if ( required && validator.isEmpty( data[ fieldName ] ) ) {
-			errors[ fieldName ] = `${errorContent} is required`;
+			errors[ fieldName ] = `Le ${errorContent} est obligatoire`;
 		}
 
 

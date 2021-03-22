@@ -72,7 +72,7 @@ const DesktopNav = ({ className, productCategories }) => {
                             </div>
                         )}
 
-                        {(navItem.text === "SHOP" && productCategories && productCategories.length) ? (
+                        {(navItem.text === "BOUTIQUE" && productCategories && productCategories.length) ? (
                             <div className="dropdown-menu">
                                 <Row>
                                     <Col lg={12}>
@@ -99,7 +99,7 @@ const DesktopNav = ({ className, productCategories }) => {
                                             <div className={`col-sm-9`}>
                                                 <div className="product-categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8 relative px-8">
                                                     {(undefined !== productCategories) && (
-                                                        productCategories[selectedNavCat].products.nodes.map(product => <Product key={product?.id} product={product} categorySlug={""} details={true} loading={false} />)
+                                                        productCategories[selectedNavCat].products.nodes.map(product => <Product key={product?.id}  customWidth={100} customHeight={120} product={product} categorySlug={""} details={true} loading={false} />)
                                                     )}
                                                 </div>
                                             </div>

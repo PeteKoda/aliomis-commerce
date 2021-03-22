@@ -314,7 +314,7 @@ const ProfilePage = () => {
                                             </svg>
                                         </span>
                                         <a href="#">
-                                            <span className="ml-2">Billing Details</span>
+                                            <span className="ml-2">Informations facture</span>
                                         </a>
                                     </li>
                                     <li onClick={() => setActiveTab(3)} className={` px-4 py-4 flex flex-row  border-gray-300 hover:text-black  hover:font-bold ${activeTab === 3 ? "text-black font-bold" : "text-gray-700"}`}>
@@ -338,7 +338,7 @@ const ProfilePage = () => {
                                             </svg>
                                         </span>
                                         <a href="#">
-                                            <span className="ml-2">Shipping Details</span>
+                                            <span className="ml-2">Informations de livraison</span>
                                         </a>
                                     </li>
                                     <li onClick={() => setActiveTab(4)} className={` px-4 py-4 flex flex-row  border-gray-300 hover:text-black  hover:font-bold ${activeTab === 4 ? "text-black font-bold" : "text-gray-700"}`}>
@@ -432,7 +432,7 @@ const ProfilePage = () => {
                         {activeTab === 2 && (
                             <div className="px-4 lg:px-8">
                                 <div>
-                                    <h2 className="font-bold text-2xl">Billing Details</h2>
+                                    <h2 className="font-bold text-2xl">Informations facture</h2>
                                     <Billing input={input} handleOnChange={handleOnChange} />
                                     <button className="checkout-bttn mx-auto block my-4 relative" style={{ minHeight: "38px" }} onClick={(e) => billingComplete(e)}>
                                         {!cUpdateLoading
@@ -451,7 +451,7 @@ const ProfilePage = () => {
                         {activeTab === 3 && (
                             <div className="px-4 lg:px-8">
                                 <div className="pt-8">
-                                    <h2 className="font-bold text-2xl">Shipping Details</h2>
+                                    <h2 className="font-bold text-2xl">Informations de livraison</h2>
                                     <Shipping input={shippingInput} handleOnChange={handleOnChangeShipping} />
                                     <button className="checkout-bttn mx-auto block my-4 relative" style={{ minHeight: "38px" }} onClick={(e) => shippingComplete(e)}>
                                         {!cUpdateLoading
@@ -511,7 +511,7 @@ const ProfilePage = () => {
                         <span className="tt-icon icon-f-94" />
                         <h1 className="tt-title">USER PROFILE</h1>
                         <p>You need to log in to see the profile page.</p>
-                        {/* <Link href="/shop"><a className="btn">CONTINUE SHOPPING</a></Link> */}
+                        {/* <Link href="/shop"><a className="btn">CONTINUER MES ACHATS</a></Link> */}
                     </div>
                 </div>
             )}

@@ -53,6 +53,7 @@ const HOME_PAGE_QUERY = gql`
                         altText
                         sourceUrl
                     }
+                    url
                 }
             }
         }

@@ -191,7 +191,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
 `;
 
 export const PRODUCT_SLUGS = gql`query ProductCategories {
-    productCategories(first:1000){
+    productCategories(first:1000, where: {exclude:[15,82]}){
         edges{
           node{
             slug

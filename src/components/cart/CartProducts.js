@@ -23,7 +23,7 @@ const CartProducts = (props) => {
             </table>
             <div className="tt-shopcart-btn">
                 <div className="col-left">
-                    <Link href="/"><a className="btn-link"><i className="icon-e-19" />CONTINUE SHOPPING</a></Link>
+                    <Link href="/"><a className="btn-link"><i className="icon-e-19" />CONTINUER MES ACHATS</a></Link>
                 </div>
                 <div className="col-right">
                     <a className="btn-link cursor-pointer"
@@ -40,7 +40,7 @@ const CartProducts = (props) => {
                             </div>
                             :
                             <Fragment>
-                                <i className="icon-h-02" />CLEAR SHOPPING CART
+                                <i className="icon-h-02" />VIDER MON PANIER
                             </Fragment>
                         }
                     </a>

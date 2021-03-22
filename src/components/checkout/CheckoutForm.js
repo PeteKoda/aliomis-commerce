@@ -374,7 +374,7 @@ const CheckoutForm = () => {
                                 <div className={`mb-4 ${formStep === 1 && "pb-4"}`} style={{ borderBottom: "1px solid lightgray" }}>
                                     <div className="flex mt-8">
                                         <div className="step-indicator step-indicator-active">1</div>
-                                        <h2 className="text-xl font-medium mb-4">Shipping Details</h2>
+                                        <h2 className="text-xl font-medium mb-4">Informations de livraison</h2>
                                     </div>
                                     {formStep === 1
                                         ?
@@ -390,13 +390,13 @@ const CheckoutForm = () => {
                                                         onChange={() => setBillingAsShipping(!billingAsShipping)}
                                                         className="mr-4"
                                                     />
-                                                    Set billing as shipping
+                                                    Garder les mêmes informations pour la facturation
                                                 </label>
                                             )}
 
                                             {(shippingInput && shippingInput.shippingMethod.includes("mondial") && shippingInput.address2.includes("Mondial"))
                                                 ?
-                                                <button className="checkout-bttn mx-auto block my-4" onClick={(e) => shippingComplete(e)}>Continue</button>
+                                                <button className="checkout-bttn mx-auto block my-4" onClick={(e) => shippingComplete(e)}>Continuer</button>
                                                 :(
                                                     shippingInput && shippingInput.shippingMethod.includes("mondial")
                                                     ?
@@ -407,7 +407,7 @@ const CheckoutForm = () => {
                                             }
 
                                             {(shippingInput && !shippingInput.shippingMethod.includes("mondial")) && (
-                                                <button className="checkout-bttn mx-auto block my-4" onClick={(e) => shippingComplete(e)}>Continue</button>
+                                                <button className="checkout-bttn mx-auto block my-4" onClick={(e) => shippingComplete(e)}>Continuer</button>
                                             )}
 
 
@@ -425,13 +425,13 @@ const CheckoutForm = () => {
                                 <div className={`mb-4 ${formStep === 2 && "pb-4"}`} style={{ borderBottom: "1px solid lightgray" }}>
                                     <div className="flex">
                                         <div className="step-indicator step-indicator-active">2</div>
-                                        <h2 className="text-xl font-medium mb-4">Billing Details</h2>
+                                        <h2 className="text-xl font-medium mb-4">Informations facture</h2>
                                     </div>
                                     {formStep === 2
                                         ?
                                         <React.Fragment>
                                             <Billing input={input} handleOnChange={handleOnChange} />
-                                            <button className="checkout-bttn mx-auto block my-4" onClick={(e) => billingComplete(e)}>Continue</button>
+                                            <button className="checkout-bttn mx-auto block my-4" onClick={(e) => billingComplete(e)}>Continuer</button>
 
                                         </React.Fragment>
                                         :
@@ -444,7 +444,7 @@ const CheckoutForm = () => {
                                 {/*Payment*/}
                                 <div className="flex">
                                     <div className="step-indicator step-indicator-active">3</div>
-                                    <h2 className="text-xl font-medium mb-4">Payment Details</h2>
+                                    <h2 className="text-xl font-medium mb-4">Méthodes de paiement</h2>
                                 </div>
                                 {formStep === 3
                                     ?
@@ -471,7 +471,7 @@ const CheckoutForm = () => {
                                         {checkoutLoading && <p>Processing Order...</p>}
                                         {requestError && <p>Error : {requestError} :( Please try again</p>}
 
-                                        {/* <button onClick={(e) => billingComplete(e)}>Continue</button> */}
+                                        {/* <button onClick={(e) => billingComplete(e)}>Continuer</button> */}
                                     </div>
                                     :
                                     <div>
@@ -490,7 +490,7 @@ const CheckoutForm = () => {
                                             <i className="icon-g-48" style={{ fontSize: "20px", color: "#4a4a4a" }} />
                                         </div>
                                         <div>
-                                            <h2 className="text-xl font-medium">Your Order</h2>
+                                            <h2 className="text-xl font-medium">Votre Commande</h2>
                                         </div>
                                     </div>
                                     <YourOrder cart={cart} cartLoading={cartLoading} shippingMethodLoading={shippingMethodLoading} />

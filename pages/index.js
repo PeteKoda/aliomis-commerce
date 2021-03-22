@@ -9,6 +9,7 @@ import LatestBlog from "@components/blog";
 
 
 import PromoCarousel from "../src/components/home/PromoCarousel";
+import CategoryCarousel from "../src/components/home/CategoryCarousel";
 import IntroBanner from "../src/components/home/IntroBanner";
 import AboutUs from "../src/components/home/AboutUs";
 import Featured from "../src/components/home/Featured";
@@ -29,8 +30,12 @@ export default function Home (props) {
                 </section>
 
 				{/*Offer - Best sellers Carousel*/}
-                <section>
+                {/* <section>
                     <PromoCarousel bestSellers={bestSellers} offers={offers} promo={page.homePageAcf.promo} />
+                </section> */}
+
+                <section>
+                    <CategoryCarousel productCategories={props.productCategories} />
                 </section>
 
                 <section>
@@ -42,7 +47,7 @@ export default function Home (props) {
                 </section>
                 <section>
                     <div className="text-center py-8" style={{backgroundColor:"#bdced3",color: "#ffffff",fontSize: "37px",fontWeight:"200",fontStyle: "italic"}}>
-                        Livraison offerte à partir de 75€
+                        Découvrir nos producteurs
                     </div>
                 </section>
                 <section>

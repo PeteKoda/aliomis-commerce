@@ -116,7 +116,7 @@ const CartItemsContainer = () => {
             <div className="shopping-cart-wrapper content-indent">
                 {(cart && cart.products && !clCart) && cart.products.length > 0 && (
                     <Container>
-                        <h1 className="tt-title-subpages noborder">SHOPPING CART</h1>
+                        <h1 className="tt-title-subpages noborder">PANIER</h1>
 
                         <Row>
                             <Col xl={8}>

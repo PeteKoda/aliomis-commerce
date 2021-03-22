@@ -66,7 +66,7 @@ const LatestBlog = ({ blogs }) => {
                     <Row>
                         {(posts && posts.edges && posts.edges.length > 0) && posts.edges.map((blog, i) => (
                             <Col md={6} lg={4} key={blog.title}>
-                                <div data-sal="slide-up" data-sal-delay={`${(i+1)*200 }`} data-sal-duration="500" data-sal-easing="ease-out-sine">
+                                <div>
                                     <PostGrid
                                         slug={`https://blog.aliomis.com/${blog.node.categories.edges[0].node.slug}/${blog.node.slug}`}
                                         title={htmlDecode(blog.node.title)}

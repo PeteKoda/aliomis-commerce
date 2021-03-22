@@ -104,14 +104,14 @@ const StripeForm = (props) => {
                     fontSize: "1.25rem",
                     paddingBottom: "0.5rem"
                 }}>
-                    Pay with card
+                    Payer par carte
             </div>
             <CardElement
                 options={{
                     hidePostalCode: true, // We'll be sending up the postal ourselves
                 }}
             />
-            <button className="bttn-default mx-auto mt-4" disabled={!stripe} onClick={(e) => handleSubmit(e)}>Pay {props.total}€</button>
+            <button className="bttn-default mx-auto mt-4" disabled={!stripe} onClick={(e) => handleSubmit(e)}>Payer {props.total}€</button>
         </div>
     )
 }

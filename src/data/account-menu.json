@@ -2,7 +2,7 @@
   {
     "id": 1,
     "iconClass": "icon-f-94",
-    "text": "Profile",
+    "text": "Profil",
     "link": "/profile/",
     "action": false,
     "authenticated": true
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "iconClass": "icon-f-76",
-    "text": "Log Out",
+    "text": "Se déconnecter",
     "link": "",
     "action": "logout",
     "authenticated": true

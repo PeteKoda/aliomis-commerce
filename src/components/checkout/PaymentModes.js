@@ -15,14 +15,14 @@ const PaymentModes = ( { input, handleOnChange } ) => {
 			<div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="paypal" className="form-check-input mr-3" name="paymentMethod" type="radio"/>
-					<span className="woo-next-payment-content">Pay with Paypal</span>
+					<span className="woo-next-payment-content">Payer avec Paypal</span>
 				</label>
 			</div>
             {/*Pay with Stripe*/}
 			<div className="form-check woo-next-payment-input-container mt-2">
 				<label className="form-check-label">
 					<input onChange={ handleOnChange } value="stripe" className="form-check-input mr-3" name="paymentMethod" type="radio"/>
-					<span className="woo-next-payment-content">Stripe</span>
+					<span className="woo-next-payment-content">Payer par carte bancaire</span>
 				</label>
 			</div>
 			{/*Check Payments*/}

@@ -30,7 +30,7 @@ const IntroBanner = ({ data }) => {
                 <p className="home-up-title text-center">{data.h2}</p>
                 <h1 className="home-h1 py-4">{data.h1}</h1>
                 <div className="flex justify-center">
-                    <Link href="/">
+                    <Link href={data.cta.link}>
                         <a className="bttn-default inline-block" style={{color:"white", border:"1px solid #ffffff8f"}}>
                             {data.cta.text}
                         </a>

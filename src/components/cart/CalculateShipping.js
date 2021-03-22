@@ -134,7 +134,7 @@ const CalculateShipping = ({ cart, refetchCart, cartLoading }) => {
                         </button>
                         :
                         <button className="btn btn-md ml-2" style={{ width: "200px" }} onClick={applyCoupon}>
-                            <span className="icon icon-check_circle" />ADD COUPON
+                            <span className="icon icon-check_circle" />CODE PROMO
                         </button>
                 }
 
@@ -197,7 +197,7 @@ const CalculateShipping = ({ cart, refetchCart, cartLoading }) => {
                             :
                             <tfoot>
                                 <tr>
-                                    <th>SUB TOTAL</th>
+                                    <th>Sous-tota</th>
                                     {cart && cart?.totalProductsPrice && (
                                         <td>{cart.totalProductsPrice}</td>
                                     )}
@@ -212,12 +212,12 @@ const CalculateShipping = ({ cart, refetchCart, cartLoading }) => {
                     cartLoading
                         ?
                         <div className="btn btn-lg">
-                            <span className="icon icon-check_circle" />PROCEED TO CHECKOUT
+                            <span className="icon icon-check_circle" />VALIDER MA COMMANDE
                         </div>
                         :
                         <Link href="/checkout/">
                             <a className="btn btn-lg">
-                                <span className="icon icon-check_circle" />PROCEED TO CHECKOUT
+                                <span className="icon icon-check_circle" />VALIDER MA COMMANDE
                              </a>
                         </Link>
                 }

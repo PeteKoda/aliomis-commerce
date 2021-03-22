@@ -15,7 +15,7 @@ const Product = (props) => {
         // @TODO Need to handle Group products differently.
         undefined !== product && 'GroupProduct' !== product.__typename ? (
             <div className="product mb-3">
-                <Link href={`/${product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
+                <Link href={`/${product?.productCategories?.edges[0].node?.slug === "boutique" ? product?.productCategories?.edges[1].node?.slug : product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
                     <a className="relative block mx-auto" style={{ width: props.customWidth ? props.customWidth : "220px", height: props.customHeight ? props.customHeight : "220px" }}>
                         {!isEmpty(product.image) ? (
                             <Image

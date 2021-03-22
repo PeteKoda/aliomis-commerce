@@ -10,7 +10,7 @@ const Shipping = ({ input, handleOnChange }) => {
                 <div className="">
                     <div className="form-group mb-3">
                         <label className="text-xs" htmlFor="first-name">
-                            First Name
+                            Prénom
 							<abbr className="required" title="required">*</abbr>
                         </label>
                         <input onChange={handleOnChange} value={input.firstName} type="text" name="firstName" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="first-name" />
@@ -20,7 +20,7 @@ const Shipping = ({ input, handleOnChange }) => {
                 <div className="">
                     <div className="form-group mb-3">
                         <label className="text-xs" htmlFor="last-name">
-                            Last Name
+                            Nom
 							<abbr className="required" title="required">*</abbr>
                         </label>
                         <input onChange={handleOnChange} value={input.lastName} type="text" name="lastName" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="last-name" />
@@ -32,11 +32,11 @@ const Shipping = ({ input, handleOnChange }) => {
                 {/* Country */}
                 <div>
                     <label className="text-xs" htmlFor="country-select">
-                        Country
+                        Pays
 					<abbr className="required" title="required">*</abbr>
                     </label>
                     <select onChange={handleOnChange} value={input.country} style={{ height: "37px" }} name="country" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="country-select">
-                        <option value="">Select a country...</option>
+                        <option value="">Sélectionnez un pays...</option>
                         {countryList.length && (
                             countryList.map((country, index) => (
                                 <option key={`${country}-${index}`} value={country.countryCode}>{country.countryName}</option>
@@ -49,7 +49,7 @@ const Shipping = ({ input, handleOnChange }) => {
                 {/* Town/City */}
                 <div className="form-group mb-3">
                     <label className="text-xs" htmlFor="city">
-                        Town/City
+                        Ville
 					<abbr className="required" title="required">*</abbr>
                     </label>
                     <input onChange={handleOnChange} value={input.city} type="text" name="city" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="city" />
@@ -60,7 +60,7 @@ const Shipping = ({ input, handleOnChange }) => {
             <div className="grid grid-cols-2 gap-2">
                 <div className="">
                     <label className="text-xs" htmlFor="street-address">
-                        Street Address
+                    Adresse postale
 					<abbr className="required" title="required">*</abbr>
                     </label>
                     <input type="text" onChange={handleOnChange} value={input.address1} name="address1" placeholder="House number and street name" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded mb-3" id="street-address" />
@@ -76,7 +76,7 @@ const Shipping = ({ input, handleOnChange }) => {
                 {/* County */}
                 <div>
                     <label className="text-xs" htmlFor="state">
-                        State/County
+                        Région
 					<abbr className="required" title="required">*</abbr>
                     </label>
                     <input onChange={handleOnChange} value={input.state} type="text" name="state" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="state" />
@@ -85,7 +85,7 @@ const Shipping = ({ input, handleOnChange }) => {
                 {/* Post Code */}
                 <div >
                     <label className="text-xs" htmlFor="post-code">
-                        Postcode
+                        Code postal
 					<abbr className="required" title="required">*</abbr>
                     </label>
                     <input onChange={handleOnChange} value={input.postcode} type="text" name="postcode" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="post-code" />
@@ -95,7 +95,7 @@ const Shipping = ({ input, handleOnChange }) => {
 
             {/* Company Name */}
             <div className="form-group mb-3">
-                <label className="text-xs" htmlFor="first-name">Company Name</label>
+                <label className="text-xs" htmlFor="first-name">Nom entreprise (facultatif)</label>
                 <input onChange={handleOnChange} value={input.company} type="text" name="company" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="first-name" />
                 <Error errors={input.errors} fieldName={'company'} />
             </div>

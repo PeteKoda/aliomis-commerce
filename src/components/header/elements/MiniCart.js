@@ -20,7 +20,7 @@ const MiniCart = ({ className, isHidden, openHandler, closeHandler }) => {
     return (
         <div className={`tt-parent-box ${className}`}>
             <div className={`tt-cart tt-dropdown-obj ${!isHidden ? "active" : null}`}>
-                <Link href="/cart/">
+                <Link href="/panier/">
                     <a className="tt-dropdown-toggle" data-id="miniCart" onClick={openHandler}>
                         <i className="icon-f-39" />
                         <div className="tt-badge-cart text-center">{productsCount ? productsCount : 0}</div>
@@ -105,7 +105,7 @@ const MiniCart = ({ className, isHidden, openHandler, closeHandler }) => {
                                     {shoppingCart.length > 3 && (
                                         <div className="flex-align-center">
                                             <Tooltip content="View Cart" className="d-flex justify-content-center">
-                                                <Link href="/cart">
+                                                <Link href="/panier">
                                                     <a className="btn-link-02 text-center">. . .</a>
                                                 </Link>
                                             </Tooltip>
@@ -123,11 +123,11 @@ const MiniCart = ({ className, isHidden, openHandler, closeHandler }) => {
                                             </Link>
                                         </div>
                                         <div className="tt-item">
-                                            <Link href="/cart">
+                                            <Link href="/panier">
                                                 <a className="btn-link-02 tt-hidden-mobile">View Cart</a>
                                             </Link>
 
-                                            <Link href="/cart">
+                                            <Link href="/panier">
                                                 <a className="btn btn-border tt-hidden-desktop">VIEW CART</a>
                                             </Link>
                                         </div>

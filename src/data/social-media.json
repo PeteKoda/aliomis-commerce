@@ -1,20 +1,30 @@
 [
-  {
-    "id": 1,
-    "media": "facebook",
-    "username": "myaliomis",
-    "iconClass": "icon-g-64"
-  },
-  {
-    "id": 2,
-    "media": "instagram",
-    "username": "myaliomis",
-    "iconClass": "icon-g-67"
-  },
-  {
-    "id": 3,
-    "media": "m.me",
-    "username": "myaliomis",
-    "iconClass": "icon-h-11"
-  }
+    {
+        "id": 1,
+        "media": "facebook",
+        "username": "myaliomis",
+        "www" : true,
+        "iconClass": "icon-g-64"
+    },
+    {
+        "id": 2,
+        "media": "instagram",
+        "www" : true,
+        "username": "myaliomis",
+        "iconClass": "icon-g-67"
+    },
+    {
+        "id": 3,
+        "media": "m.me",
+        "www" : true,
+        "username": "myaliomis",
+        "iconClass": "icon-h-11"
+    },
+    {
+        "id": 4,
+        "media": "gr.pinterest",
+        "www" : false,
+        "username": "elsarobt0115",
+        "iconClass": "icon-g-70"
+    }
 ]

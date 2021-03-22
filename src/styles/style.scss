@@ -1117,3 +1117,12 @@ input[type=number]::-webkit-outer-spin-button {
     opacity: 0.01;
   }
   
+
+  .grayscale {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease-in-out;
+  }
+
+  .grayscale:hover {
+    filter: grayscale(0%);
+  }

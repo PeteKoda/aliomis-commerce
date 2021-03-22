@@ -100,7 +100,7 @@ const AddToCart = (props) => {
             // 2. Show View Cart Button
             setShowViewCart(true)
 
-            cogoToast.success('Product added to cart!', {
+            cogoToast.success('Produit ajouté au panier', {
                 position: 'bottom-right',
                 hideAfter: 3
             })
@@ -148,7 +148,7 @@ const AddToCart = (props) => {
             }
             {/* {
                 showViewCart ? (
-                    <Link href="/cart"><button className={`px-3 py-1 rounded-sm text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600`}>View Cart</button></Link>
+                    <Link href="/panier"><button className={`px-3 py-1 rounded-sm text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600`}>View Cart</button></Link>
                 ) : ''
             } */}
         </div >

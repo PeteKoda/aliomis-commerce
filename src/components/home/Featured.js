@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Product from "./Product"
 
 const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
@@ -18,7 +18,8 @@ const settings = {
                 slidesToShow: 3,
                 slidesToScroll: 3,
                 infinite: true,
-                dots: true
+                arrows: true,
+                dots: false
             }
         },
         {
@@ -26,7 +27,9 @@ const settings = {
             settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
-                initialSlide: 2
+                initialSlide: 2,
+                arrows: true,
+                dots: false
             }
         },
         {
@@ -34,7 +37,8 @@ const settings = {
             settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                arrows: false
+                arrows: true,
+                dots: false
             }
         }
     ]
@@ -55,11 +59,11 @@ const Featured = ({ data, featured }) => {
                     <p className="featured-s-p">{data.subTitle}</p>
                     <h2 className="featured-s-h2">{data.title}</h2>
                 </div>
-                <div className="py-8" data-sal="slide-left" data-sal-delay="300" data-sal-duration="500" data-sal-easing="ease-out-sine">
+                <div className="py-8 mt-3" data-sal="slide-left" data-sal-delay="300" data-sal-duration="500" data-sal-easing="ease-out-sine" style={{ backgroundColor: "#fff" }}>
                     <Slider {...settings}>
                         {featured.edges.map((product, i) => (
                             <div key={product?.node.id} className="pr-0 md:pr-4">
-                                <Product product={product.node} categorySlug={""} loading={false} />
+                                <Product product={product.node} categorySlug={""} loading={false}  key={product?.node?.id} details={true} />
                             </div>
                         ))}
                     </Slider>

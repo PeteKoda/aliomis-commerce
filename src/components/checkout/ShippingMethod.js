@@ -88,10 +88,10 @@ const ShippingMethod = ({ input, handleOnChange, cart, setShippingInput, loading
             <div className="pt-4" style={{ color: "#4e4e4e" }}>
                 <div className="grid grid-cols-2 gap-2 px-4 py-2" style={{ background: "#f8f8f8", fontWeight: "600" }}>
                     <div>
-                        Delivery Method
+                        Méthode de livraison
                 </div>
                     <div>
-                        Shipping Cost
+                        Coût de la livraison
                 </div>
                 </div>
                 {!loading

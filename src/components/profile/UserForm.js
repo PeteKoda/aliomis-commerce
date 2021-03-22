@@ -20,7 +20,7 @@ const UserForm = ({ input, handleOnChange }) => {
                 <div className="">
                     <div className="form-group mb-3">
                         <label className="text-xs" htmlFor="first-name">
-                            First Name
+                            Prénom
 							<abbr className="required" title="required">*</abbr>
                         </label>
                         <input onChange={handleOnChange} value={input.firstName} type="text" name="firstName" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="first-name" />
@@ -30,7 +30,7 @@ const UserForm = ({ input, handleOnChange }) => {
                 <div className="">
                     <div className="form-group mb-3">
                         <label className="text-xs" htmlFor="last-name">
-                            Last Name
+                            Nom
 							<abbr className="required" title="required">*</abbr>
                         </label>
                         <input onChange={handleOnChange} value={input.lastName} type="text" name="lastName" className="form-control woo-next-checkout-input p-1 w-full border-solid border border-gray-500 rounded" id="last-name" />
