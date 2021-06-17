@@ -20,7 +20,7 @@ const ProductFromGrid = (props) => {
     //     }
     // }, [])
 
-    console.log(product.node)
+    // console.log(product.node)
 
     return (
         // @TODO Need to handle Group products differently.

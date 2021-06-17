@@ -20,7 +20,7 @@ const Product = (props) => {
         }
     }, [])
 
-    console.log(product)
+    // console.log(product)
 
     return (
         // @TODO Need to handle Group products differently.

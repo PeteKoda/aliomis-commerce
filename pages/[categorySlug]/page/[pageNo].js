@@ -48,7 +48,7 @@ export default function CategorySingle(props) {
         return <div>Loading...</div>
     }
 
-    console.log(props)
+    // console.log(props)
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -179,7 +179,7 @@ export async function getStaticProps(context) {
             priceLimits: filters?.data?.priceLimits || [],
             categoryAcf: data?.products?.edges[0].node?.productCategories?.edges[0].node.categoryAcf || {},
             categoryName: data?.products?.edges[0].node?.productCategories?.edges[0].node?.name || '',
-            categorySlug: data?.products?.edges[0].node?.productCategories?.edges[0].node?.slug || '',
+            categorySlug: slug || productCategories?.edges[1].node?.slug ,
         },
         revalidate: 10
     }
@@ -195,7 +195,7 @@ export async function getStaticPaths() {
     const pathsData = []
 
     data?.productCategories?.nodes && data?.productCategories?.nodes.map((productCategory) => {
-        if (!isEmpty(productCategory?.slug)) {
+        if (!isEmpty(productCategory?.slug) && productCategory?.slug !== "uncategorized") {
             let totalPostsCount = productCategory?.products?.pageInfo?.offsetPagination?.total ?? 0;
 
             let pagesCount = Math.ceil((totalPostsCount - PER_PAGE_FIRST) / PER_PAGE_REST + 1);
