@@ -37,6 +37,15 @@ export const PRODUCT_BY_SLUG_QUERY = gql` query Product($slug: ID!) {
       name
       averageRating
 
+      shippingClasses{
+        edges{
+            node{
+                name
+                uri
+            }
+        }
+      }
+      
       productAcf{
         additionalInformation{
           row{

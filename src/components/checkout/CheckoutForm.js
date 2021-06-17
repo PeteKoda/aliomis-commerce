@@ -167,6 +167,7 @@ const CheckoutForm = () => {
         },
         onCompleted: () => {
             // console.warn( 'completed CHECKOUT_MUTATION' );
+
             refetch();
         },
         onError: (error) => {

@@ -231,7 +231,9 @@ export const getFormattedCart = (data) => {
             title: givenProduct.image.title
         };
 
-        product.crossSell = givenProducts[i].product.crossSell
+        product.crossSell = givenProducts[i].product.crossSell;
+
+        product.shippingClass = givenProducts[i].product.shippingClasses ? givenProducts[i].product.shippingClasses.edges[0]?.node?.name : "";
 
         totalProductsCount += givenProducts[i].quantity;
 
@@ -281,7 +283,7 @@ export const createCheckoutData = (order, shipping, shipToDifferentAddress) => {
             phone: shipping.phone,
             company: shipping.company,
         },
-        shipToDifferentAddress: shipToDifferentAddress ? shipToDifferentAddress : false,
+        shipToDifferentAddress: true,
         paymentMethod: order.paymentMethod,
         shippingMethod: shipping.shippingMethod,
         // order.paymentMethod, auto mpainei apo panw

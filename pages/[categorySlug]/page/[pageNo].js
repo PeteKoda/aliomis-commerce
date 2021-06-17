@@ -1,17 +1,17 @@
 import Layout from "@components/Layout";
 import client from "@components/ApolloClient";
 // import Link from 'next/link';
-// import Product from "../../src/components/Product";
-import { PRODUCTS_BY_CATEGORY_SLUG, PRODUCT_CATEGORIES_SLUGS } from "../../src/queries/product-by-category";
-// import NESTED_PRODUCTS_AND_CATEGORIES_QUERY from "../../../src/queries/nested-products-and-categories";
-import PRODUCTS_AND_CATEGORIES_QUERY from "../../src/queries/product-and-categories";
+// import Product from "../../../src/components/Product";
+import { PRODUCTS_BY_CATEGORY_SLUG, PRODUCT_CATEGORIES_SLUGS } from "../../../src/queries/product-by-category";
+// import NESTED_PRODUCTS_AND_CATEGORIES_QUERY from "../../../../src/queries/nested-products-and-categories";
+import PRODUCTS_AND_CATEGORIES_QUERY from "../../../src/queries/product-and-categories";
 // import Skeleton from 'react-loading-skeleton';
 // import "react-input-range/lib/css/index.css"
 // import ShopProducts from "@components/shop/elements/ShopProducts";
 // import useTranslation from 'next-translate/useTranslation'
-import { PER_PAGE_FIRST, totalPagesCount } from '@utils/pagination';
+import { getPageOffset, PER_PAGE_FIRST, PER_PAGE_REST, totalPagesCount } from '@utils/pagination';
 import Breadcrumb from "@components/breadcrumb";
-import Product from "../../src/components/ProductFromGrid";
+import Product from "../../../src/components/ProductFromGrid";
 
 import Pagination from '@components/pagination';
 
@@ -36,7 +36,7 @@ export default function CategorySingle(props) {
 
     const router = useRouter()
 
-    const { categorySlug, parentCategorySlug, products, productCategories, pageInfo, categoryAcf, nestProductCategories, filters, priceLimits } = props;
+    const { categorySlug, products, productCategories, pageInfo, categoryAcf, nestProductCategories, filters, priceLimits } = props;
 
     const [productsListFt, setProductsListFt] = useState(products)
 
@@ -62,6 +62,10 @@ export default function CategorySingle(props) {
             addBrandFilter()
         }
     }, [router.query.categorySlug])
+
+    useEffect(() => {
+        setProductsListFt(props.products)
+    }, [router.query.pageNo])
 
 
     return (
@@ -119,11 +123,14 @@ export default function CategorySingle(props) {
 
 export async function getStaticProps(context) {
 
+    const pageNo = context.params.pageNo || {};
+    const offset = getPageOffset(pageNo);
+
     let slug = context.params.categorySlug
 
     const { data } = await client.query(({
         query: PRODUCTS_BY_CATEGORY_SLUG,
-        variables: { slug: slug, offset: null }
+        variables: { slug: slug, offset: offset }
     }));
 
     const constData = await client.query(({
@@ -173,14 +180,14 @@ export async function getStaticProps(context) {
             categoryAcf: data?.products?.edges[0].node?.productCategories?.edges[0].node.categoryAcf || {},
             categoryName: data?.products?.edges[0].node?.productCategories?.edges[0].node?.name || '',
             categorySlug: data?.products?.edges[0].node?.productCategories?.edges[0].node?.slug || '',
-            parentCategorySlug: data?.products?.edges[0].node?.productCategories?.edges[0].node?.parent?.node?.slug || '',
         },
         revalidate: 10
     }
 
 }
 
-export async function getStaticPaths({ locales }) {
+
+export async function getStaticPaths() {
     const { data } = await client.query({
         query: PRODUCT_CATEGORIES_SLUGS
     })
@@ -189,9 +196,19 @@ export async function getStaticPaths({ locales }) {
 
     data?.productCategories?.nodes && data?.productCategories?.nodes.map((productCategory) => {
         if (!isEmpty(productCategory?.slug)) {
-            pathsData.push({
-                params: { categorySlug: productCategory?.slug, chosenCategory: productCategory },
-            })
+            let totalPostsCount = productCategory?.products?.pageInfo?.offsetPagination?.total ?? 0;
+
+            let pagesCount = Math.ceil((totalPostsCount - PER_PAGE_FIRST) / PER_PAGE_REST + 1);
+            if (totalPostsCount > 0) {
+                let paths = new Array(pagesCount).fill('').map((_, index) => ({
+                    params: { categorySlug: productCategory?.slug, chosenCategory: productCategory, pageNo: (index + 1).toString() },
+                }));
+
+                console.log( "Page to build: page/")
+                console.log(paths)
+
+                pathsData.push(...paths)
+            }
         }
     })
 

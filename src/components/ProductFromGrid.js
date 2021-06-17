@@ -7,37 +7,34 @@ import Price from "./single-product/price";
 import { useState, useEffect } from "react"
 
 
-const Product = (props) => {
+const ProductFromGrid = (props) => {
     const { product } = props;
 
     const [isFridgeProduct, setIsFridgeProduct] = useState(false)
 
-    useEffect(() => {
-        if (props.product && props.product.shippingClasses && props.product.shippingClasses.edges[0]?.node?.name) {
-            if (props.product.shippingClasses.edges[0].node.name === "produits-frais") {
-                setIsFridgeProduct(true)
-            }
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (props.product && props.product.node.shippingClasses && props.product.node.shippingClasses.edges[0]?.node?.name) {
+    //         if (props.product.node.shippingClasses.edges[0].node.name === "produits-frais") {
+    //             setIsFridgeProduct(true)
+    //         }
+    //     }
+    // }, [])
 
-    console.log(product)
+    console.log(product.node)
 
     return (
         // @TODO Need to handle Group products differently.
-        undefined !== product && 'GroupProduct' !== product.__typename ? (
+        undefined !== product && 'GroupProduct' !== product?.node.__typename ? (
             <div className="product mb-3">
-                <Link href={`/${product?.productCategories?.edges[0].node?.slug === "boutique" ? product?.productCategories?.edges[1].node?.slug : product?.productCategories?.edges[0].node?.slug}/${product.slug}`} >
+                <Link href={`/${product?.node?.productCategories?.edges[0].node?.slug === "boutique" ? product?.node?.productCategories?.edges[1].node?.slug : product?.node?.productCategories?.edges[0].node?.slug}/${product.node.slug}`} >
                     <a className="relative block mx-auto" style={{ width: props.customWidth ? props.customWidth : "220px", height: props.customHeight ? props.customHeight : "220px" }}>
-                        {!isEmpty(product.image) ? (
+                        {!isEmpty(product.node.image) ? (
                             <Image
-                                src={product.image.sourceUrl}
+                                src={product.node.image.sourceUrl}
                                 alt="Product image"
                                 layout="fill"
-                                className={"object-cover"}
-                            // width={props.customWidth ? props.customWidth : 480}
-                            // height={props.customHeight ? props.customHeight : 480}
+
                             />
-                            // <img src={product.image.sourceUrl} alt="Product image" />
                         ) : !isEmpty(clientConfig.productImagePlaceholder) ? (
                             <img
                                 src={clientConfig.productImagePlaceholder}
@@ -47,7 +44,7 @@ const Product = (props) => {
 
                         {product?.awards?.edges.length > 0 && (
                             <div className="flex flex-col relative justify-end items-end">
-                                {product.awards.edges.map((award) => (
+                                {product.node.awards.edges.map((award) => (
                                     <div>
                                         <Image
                                             src={award.node.awardAcf.image.sourceUrl}
@@ -68,46 +65,27 @@ const Product = (props) => {
                                 <img src="/assets/images/general/fridge-products.png" style={{width:"50px"}} />
                             </div>
                         )}
-
-                        {/* {!props.addToCartStatic && (
-                            <div className="product-image-inner">
-                                <AddToCartButton product={product} />
-                            </div>
-                        )} */}
-
-                        {/* <div className="product-image-inner">
-                            <div className="qodef-woo-product-additional-icons">
-                                <div className="yith-wcwl-add-to-wishlist add-to-wishlist-435  wishlist-fragment on-first-load">
-                                    <div className="yith-wcwl-add-button">
-                                        {"<3"}
-                                    </div>
-                                </div>
-                                <a href="#" className="button yith-wcqv-button" >Quick View</a>
-                            </div>
-                            <a href="https://konsept.qodeinteractive.com/product/ficus/" className="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
-                            <AddToCartButton product={product} />
-                        </div> */}
                     </a>
                 </Link>
                 {props.details && (
                     <div className={`product-info ${props.detailClasses}`}>
                         <h3 className="product-title mt-3 text-center">
-                            {product.name ? product.name : ''}
+                            {product.node.name ? product.node.name : ''}
                         </h3>
-                        <Price salesPrice={product?.price} regularPrice={product?.regularPrice} />
+                        <Price salesPrice={product?.node?.price} regularPrice={product?.node?.regularPrice} />
                     </div>
                 )}
 
                 {props.bttn && (
                     <div>
                         {
-                            !product?.stockQuantity
+                            !product?.node?.stockQuantity
                                 ?
                                 <div className="block text-center">
                                     Out Of Stock
                                 </div>
                                 :
-                                <AddToCartButton product={product} classes={props.bttnClasses} isFridgeProduct={isFridgeProduct} />
+                                <AddToCartButton product={product.node} classes={props.bttnClasses} isFridgeProduct={isFridgeProduct} />
                         }
                     </div>
                 )}
@@ -119,4 +97,4 @@ const Product = (props) => {
     );
 };
 
-export default Product;
+export default ProductFromGrid;

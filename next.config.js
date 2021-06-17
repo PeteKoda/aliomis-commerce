@@ -14,13 +14,13 @@ module.exports = withPreact({
             use: ["@svgr/webpack"]
         });
 
-        config.plugins.push(
-            new BundleAnalyzerPlugin({
-                analyzerMode: 'server',
-                analyzerPort: isServer ? 8888 : 8889,
-                openAnalyzer: true,
-            })
-        )
+        // config.plugins.push(
+        //     new BundleAnalyzerPlugin({
+        //         analyzerMode: 'server',
+        //         analyzerPort: isServer ? 8888 : 8889,
+        //         openAnalyzer: true,
+        //     })
+        // )
 
 
         return config

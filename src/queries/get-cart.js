@@ -33,6 +33,15 @@ const GET_CART = gql`
                 title   
               }
             }
+
+            shippingClasses{
+                edges{
+                    node{
+                        name
+                        uri
+                    }
+                }
+            }
             ... on SimpleProduct {
                 crossSell{
                   edges{

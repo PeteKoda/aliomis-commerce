@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { Fragment } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
+function findFridgeProducts(cart) {
+    console.log(cart)
+    let isFridgeProducts = false
+    cart.products.map((product) => {
+        if (product.shippingClass === "produits-frais") {
+            isFridgeProducts = true
+        }
+    })
 
+    return isFridgeProducts
+}
 
 const ShippingMethod = ({ input, handleOnChange, cart, setShippingInput, loading }) => {
 
@@ -97,26 +108,56 @@ const ShippingMethod = ({ input, handleOnChange, cart, setShippingInput, loading
                 {!loading
                     ?
                     <div>
-                        {cart && cart?.availableShippingMethods?.[0]?.rates && cart?.availableShippingMethods?.[0]?.rates.map((rts, i) => (
-                            <div key={`shipping-rates-${i}`} className="w-full flex px-4 py-2" style={input.shippingMethod === rts.id ? { border: "1px solid blue" } : { border: "none" }}>
-                                <div className="w-1/2">
-                                    <label>
-                                        <input
-                                            type="radio"
-                                            value={rts.id}
-                                            checked={input.shippingMethod === rts.id}
-                                            onChange={handleOnChange}
-                                            name="shippingMethod"
-                                            className="mr-4"
-                                        />
-                                        {rts.label}
-                                    </label>
-                                </div>
-                                <div className="w-1/2">
-                                    {rts.cost}
-                                </div>
-                            </div>
-                        ))}
+                        {cart && cart?.availableShippingMethods?.[0]?.rates && cart?.availableShippingMethods?.[0]?.rates.map((rts, i) => {
+                            if (findFridgeProducts(cart) && rts.methodId === "local_pickup") {
+                                return (
+                                    <Fragment>
+                                        <div className="text-center py-2">
+                                            You have selected a fridge product thats why only Local Pickup is available
+                                        </div>
+                                        <div key={`shipping-rates-${i}`} className="w-full flex px-4 py-2" style={input.shippingMethod === rts.id ? { border: "1px solid blue" } : { border: "none" }}>
+                                            <div className="w-1/2">
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        value={rts.id}
+                                                        checked={input.shippingMethod === rts.id}
+                                                        onChange={handleOnChange}
+                                                        name="shippingMethod"
+                                                        className="mr-4"
+                                                    />
+                                                    {rts.label}
+                                                </label>
+                                            </div>
+                                            <div className="w-1/2">
+                                                {rts.cost}
+                                            </div>
+                                        </div>
+                                    </Fragment>
+                                )
+                            } else if (!findFridgeProducts(cart)) {
+                                return (
+                                    <div key={`shipping-rates-${i}`} className="w-full flex px-4 py-2" style={input.shippingMethod === rts.id ? { border: "1px solid blue" } : { border: "none" }}>
+                                        <div className="w-1/2">
+                                            <label>
+                                                <input
+                                                    type="radio"
+                                                    value={rts.id}
+                                                    checked={input.shippingMethod === rts.id}
+                                                    onChange={handleOnChange}
+                                                    name="shippingMethod"
+                                                    className="mr-4"
+                                                />
+                                                {rts.label}
+                                            </label>
+                                        </div>
+                                        <div className="w-1/2">
+                                            {rts.cost}
+                                        </div>
+                                    </div>
+                                )
+                            }
+                        })}
                     </div>
                     :
                     <div>

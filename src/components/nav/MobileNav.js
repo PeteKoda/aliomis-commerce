@@ -55,7 +55,7 @@ const MobileNav = ({ className, mobileNavbarHandler, showMobileNavbar, productCa
                                     </a>
                                 </Link>
 
-                                {(nav?.text === "SHOP" && productCategories && productCategories.length) ? (
+                                {(nav?.text === "BOUTIQUE" && productCategories && productCategories.length) ? (
                                     <ul className="pl-4">
                                         {/* <li className="title">SHOP CATEGORIES</li> */}
                                         {productCategories.map((productCategory, i) => (

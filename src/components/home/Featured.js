@@ -53,13 +53,13 @@ const Featured = ({ data, featured }) => {
     console.log(featured)
 
     return (
-        <div style={{ backgroundColor: "#ece8e8" }}>
+        <div style={{ backgroundColor: "#fff" }}>
             <div className="container mx-auto py-20 lg:py-32 px-4" >
                 <div data-sal="slide-right" data-sal-delay="300" data-sal-duration="500" data-sal-easing="ease-out-sine">
                     <p className="featured-s-p">{data.subTitle}</p>
                     <h2 className="featured-s-h2">{data.title}</h2>
                 </div>
-                <div className="py-8 mt-3" data-sal="slide-left" data-sal-delay="300" data-sal-duration="500" data-sal-easing="ease-out-sine" style={{ backgroundColor: "#fff" }}>
+                <div className="py-8 mt-3" style={{ backgroundColor: "#fff" }}>
                     <Slider {...settings}>
                         {featured.edges.map((product, i) => (
                             <div key={product?.node.id} className="pr-0 md:pr-4">

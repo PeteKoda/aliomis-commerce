@@ -3,6 +3,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { AppContext } from "../context/AppContext";
 import cogoToast from "cogo-toast";
 
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { getFormattedCart } from "../../functions";
 import Link from "next/link";
@@ -121,7 +123,25 @@ const AddToCart = (props) => {
         e.preventDefault()
         // handleAddToCartLocalStorage();
         setRequestError(null);
-        addToCart();
+
+        if(props.isFridgeProduct){
+            confirmAlert({
+                title: 'Fridge Product',
+                message: 'By adding a fridge product in the cart you can only pick your order from the store',
+                buttons: [
+                  {
+                    label: 'Ok',
+                    onClick: () => addToCart()
+                  },
+                  {
+                    label: 'Dont add',
+                    onClick: () => alert('Click No')
+                  }
+                ]
+              });
+        }else{
+            addToCart();
+        }
     };
 
     return (
@@ -146,11 +166,7 @@ const AddToCart = (props) => {
                 )
 
             }
-            {/* {
-                showViewCart ? (
-                    <Link href="/panier"><button className={`px-3 py-1 rounded-sm text-sm border-solid border border-current inline-block hover:bg-purple-600 hover:text-white hover:border-purple-600`}>View Cart</button></Link>
-                ) : ''
-            } */}
+        
         </div >
     );
 };

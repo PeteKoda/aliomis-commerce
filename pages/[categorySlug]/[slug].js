@@ -1,6 +1,6 @@
 import Layout from '../../src/components/Layout';
 import { useRouter } from 'next/router';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import client from '../../src/components/ApolloClient';
 import AddToCartButton from '../../src/components/cart/AddToCartButton';
 import { PRODUCT_BY_SLUG_QUERY, PRODUCT_SLUGS } from '../../src/queries/product-by-slug';
@@ -23,6 +23,7 @@ export default function Product(props) {
     const [quantity, setQuantity] = useState(1)
     const [activeTab, setActiveTab] = useState(1)
     const [activeTabContent, setActiveTabContent] = useState(product?.description)
+    const [isFridgeProduct, setIsFridgeProduct] = useState(false)
 
 
 
@@ -33,6 +34,14 @@ export default function Product(props) {
     if (router.isFallback) {
         return <div>Loading...</div>
     }
+
+    useEffect(()=> {
+        if(props.product && props.product.shippingClasses && props.product.shippingClasses.edges[0]?.node?.name){
+            if( props.product.shippingClasses.edges[0].node.name === "produits-frais"){
+                setIsFridgeProduct(true)
+            }
+        }
+    },[])
 
     function changeQuantity(type) {
         if (type === "down" && quantity > 1) {
@@ -73,6 +82,12 @@ export default function Product(props) {
                             ) : null}
                         </div>
                         <div className="product-info pl-0 pt-4 md:pt-0 md:pl-8">
+                            { isFridgeProduct && (
+                                <div className="d-flex align-items-center">
+                                    <img src="/assets/images/general/fridge-products.png" width="50" />
+                                    <span>Fridge products only purchased with local pickup</span>
+                                </div>
+                            )}
                             <h1 className="product-h1">{product.name}</h1>
                             <div className="relative">
                                 <StarRatings
@@ -103,7 +118,7 @@ export default function Product(props) {
                                             Out Of Stock
                                         </div>
                                         :
-                                        <AddToCartButton product={product} quantity={quantity} />
+                                        <AddToCartButton product={product} quantity={quantity} isFridgeProduct={isFridgeProduct} />
                                 }
                             </div>
 

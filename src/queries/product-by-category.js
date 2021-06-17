@@ -62,6 +62,15 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
                 }
           }
 
+          shippingClasses{
+            edges{
+                node{
+                    name
+                    uri
+                }
+            }
+          }
+
           awards{
             edges{
               node{
@@ -113,6 +122,150 @@ export const PRODUCT_BY_CATEGORY_SLUG = gql` query PRODUCT_BY_CATEGORY_SLUG($slu
 	}
   }
   `;
+
+
+  export const PRODUCTS_BY_CATEGORY_SLUG = gql` query PRODUCTS_BY_CATEGORY_SLUG($offset: Int, $slug: String) {
+	products(where: {offsetPagination: {offset: $offset , size: 9}, category: $slug}) {
+        pageInfo {
+          offsetPagination {
+            total
+            hasMore
+          }
+        }
+        edges {
+          node {
+            id
+            databaseId
+            averageRating
+            slug
+            description
+            image {
+              id
+              uri
+              title
+              srcSet
+              sourceUrl
+              altText
+            }
+            productCategories {
+              edges {
+                node {
+                       id
+                    name
+                    slug
+                    parent{
+                      node{
+                        slug
+                      }
+                    }
+                    categoryAcf{
+                        priceRange{
+                            priceMin
+                            priceMax
+                        }
+                      categoryAttributes{
+                        label
+                        attributes{
+                          attributeGroup{
+                            attributeTermLabel
+                            attributeTermSlug
+                            attributeSlug
+                          }
+                        }
+                      }
+                      categoryTags{
+                          label
+                          tags{
+                              name
+                          }
+                      }
+                      categoryBrands{
+                          name
+                      }
+                      categoryTypes{
+                          name
+                      }
+                  }
+                }
+              }
+            }
+            awards {
+              edges {
+                node {
+                  name
+                  description
+                  awardAcf {
+                    image {
+                      sourceUrl
+                      altText
+                    }
+                  }
+                }
+              }
+            }
+            paColors {
+              edges {
+                node {
+                  name
+                }
+              }
+            }
+            name
+            ... on SimpleProduct {
+              price
+              regularPrice
+              id
+              stockQuantity
+            }
+            ... on VariableProduct {
+              price
+              regularPrice
+              id
+              stockQuantity
+              variations {
+                nodes {
+                  databaseId
+                  name
+                  stockQuantity
+                  price
+                  salePrice
+                  sku
+                  attributes {
+                    edges {
+                      node {
+                        id
+                        name
+                        value
+                        label
+                      }
+                    }
+                  }
+                  featuredImage {
+                    node {
+                      sourceUrl
+                      altText
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const PRODUCT_BY_CATEGORY_SLUG_ENDPOINT = gql` query PRODUCT_BY_CATEGORY_SLUG_ENDPOINT($slug: ID!, $endPoint: String!) {
 	productCategory(id: $slug, idType: SLUG) {
@@ -251,13 +404,25 @@ export const PRODUCT_BY_CATEGORY_SLUG_ENDPOINT_BEFORE = gql` query   PRODUCT_BY_
   }
   `;
 
-export const PRODUCT_CATEGORIES_SLUGS = gql` query PRODUCT_CATEGORIES_SLUGS {
-    productCategories {
-    nodes {
-      id
-      slug
+  export const PRODUCT_CATEGORIES_SLUGS = gql` query PRODUCT_CATEGORIES_SLUGS {
+    productCategories(first: 200) {
+        nodes {
+            id
+            slug
+            parent{
+                node{
+                  slug
+                }
+            }
+            products{
+                pageInfo{
+                  offsetPagination{
+                    total
+                  }
+                }
+            }
+        }
     }
-  }
 }`;
 
 export const PRODUCT_CATEGORIES_PAGINATION = gql` query PRODUCT_CATEGORIES_PAGINATION($slug: ID!) {
