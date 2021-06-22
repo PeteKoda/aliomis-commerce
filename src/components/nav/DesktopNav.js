@@ -96,13 +96,13 @@ const DesktopNav = ({ className, productCategories }) => {
                                                 </ul>
                                             </div>
 
-                                            {/* <div className={`col-sm-9`}>
+                                            <div className={`col-sm-9`}>
                                                 <div className="product-categories grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8 relative px-8">
                                                     {(undefined !== productCategories) && (
                                                         productCategories[selectedNavCat].products.nodes.map(product => <Product key={product?.id}  customWidth={100} customHeight={120} product={product} categorySlug={""} details={true} loading={false} />)
                                                     )}
                                                 </div>
-                                            </div> */}
+                                            </div>
                                         </Row>
                                     </Col>
                                 </Row>

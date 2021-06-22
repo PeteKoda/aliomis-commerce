@@ -88,7 +88,10 @@ const CheckoutForm = () => {
 
     const [loadingPayment, setLoadingPayment] = useState(false)
 
-
+    useEffect(() => {
+        console.log("___________________________________")
+        console.log(shippingInput)
+    },[shippingInput])
 
     // Get Cart Data.
     const { loading: cartLoading, error, data, refetch } = useQuery(GET_CART, {
@@ -306,6 +309,7 @@ const CheckoutForm = () => {
 
     function updateCustomer(type) {
         const customerUpdatedData = billingAsShipping ? createCustomerUpdateDataBillingAsShipping(shippingInput) : createCustomerUpdateData(shippingInput);
+        console.log("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")
         console.log(customerUpdatedData)
         setCustomerData(customerUpdatedData);
 
@@ -369,7 +373,7 @@ const CheckoutForm = () => {
                     <form onSubmit={handleFormSubmit} className="woo-next-checkout-form">
                         <div className="flex flex-wrap">
 
-                            <div className="billing-details w-2/3 pr-8">
+                            <div className="billing-details w-full md:w-2/3 pr-0 pr-md-4 order-2 order-md-1">
 
                                 {/*Shipping Details*/}
                                 <div className={`mb-4 ${formStep === 1 && "pb-4"}`} style={{ borderBottom: "1px solid lightgray" }}>
@@ -464,7 +468,13 @@ const CheckoutForm = () => {
                                         {/*Stripe*/}
                                         {paymentType === 2 && (
                                             <Elements stripe={stripePromise}>
-                                                <StripeForm input={input} shippingInput={shippingInput} shipToDifferentAddress={!billingAsShipping} total={cart.totalProductsPrice} />
+                                                <StripeForm 
+                                                    input={input} 
+                                                    shippingInput={shippingInput} 
+                                                    shipToDifferentAddress={!billingAsShipping} 
+                                                    total={cart.totalProductsPrice} 
+                                                    setLoadingPayment={setLoadingPayment} 
+                                                />
                                             </Elements>
                                         )}
 
@@ -483,7 +493,7 @@ const CheckoutForm = () => {
 
                             </div>
                             {/*	Order*/}
-                            <div className="your-orders w-1/3 p-4" style={{ backgroundImage: "linear-gradient(to right,#e1e1e1 .2%,#f4f4f4 .2%)" }}>
+                            <div className="your-orders w-full md:w-1/3 p-4 order-1 order-md-2 " style={{ backgroundImage: "linear-gradient(to right,#e1e1e1 .2%,#f4f4f4 .2%)" }}>
                                 <div style={{ position: "sticky", top: "30px" }}>
                                     <div className="flex items-center  mb-4">
                                         <div className="pr-2">

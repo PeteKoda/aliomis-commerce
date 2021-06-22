@@ -495,11 +495,11 @@ body {
 }
 
 .home-up-title {
-    color: #FFFFFF;
     font-size: 50px;
     line-height: 60px;
     font-weight: 200;
     font-style: italic;
+    color: #697451;
 
     @media screen and (max-width: 767px){
         font-size: 1.5rem;
@@ -510,8 +510,8 @@ body {
 .home-h1 {
     z-index: 9;
     font-family: "Josefin Sans";
-    color: rgb(255, 255, 255);
     text-decoration: none;
+    color: #697451;
     // white-space: nowrap;
     line-height: 60px;
     letter-spacing: 11px;
@@ -1131,3 +1131,83 @@ input[type=number]::-webkit-outer-spin-button {
 //       background-color: #839362!important;
 //       color: white!important;
 //   }
+
+.filter-container {
+    max-width: 200px;
+    background-color: #ececec;
+    border-radius: 6px;
+    min-height: 64px;
+    border: 1px solid #aeadad;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.act-filter {
+    padding: 0.5rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin-left: 1rem;
+    background-color: white;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-start; 
+}
+
+.custom-select {
+    width: 152px;
+    background-color: white;
+    padding: 0.5rem;
+    border: 1px solid grey;
+    cursor: pointer;
+    color: #3e3c3c;
+
+    ul {
+        z-index: 9;
+        background-color: white;
+        width: 100%;
+        border: 1px solid lightgray;
+        margin-top: 1rem;
+        left: 0;
+
+        li:not(:last-child) {
+            border-bottom: 1px solid rgb(235, 233, 233);
+            line-height: 1.5;
+            padding-bottom: 5px;
+            padding-top: 5px;
+
+
+        }
+
+        li:not(:first-child) {
+            padding-bottom: 5px;
+            padding-top: 5px;
+            line-height: 1.5;
+        }
+
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        li:hover {
+            background-color: #839362;
+            color: white;
+        }
+    }
+  }
+
+  .custom-selected-option {
+    background-color: #839362;
+    color: white;
+  }
+
+  .m-color {
+      background-color: #839362;
+  }
+
+  .pagination-link:hover {
+    background-color: #839362;
+  }

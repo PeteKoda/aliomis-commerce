@@ -12,6 +12,7 @@ import PRODUCTS_AND_CATEGORIES_QUERY from "../../../src/queries/product-and-cate
 import { getPageOffset, PER_PAGE_FIRST, PER_PAGE_REST, totalPagesCount } from '@utils/pagination';
 import Breadcrumb from "@components/breadcrumb";
 import Product from "../../../src/components/ProductFromGrid";
+import OrderSelect from "@components/shop/elements/OrderSelect"
 
 import Pagination from '@components/pagination';
 
@@ -73,16 +74,13 @@ export default function CategorySingle(props) {
             <Breadcrumb />
             <div className="product-categories-container container mx-auto py-12 md:py-20 px-4 xl:px-0" id="shop-section">
                 <div className="flex flex-wrap">
-                    <div className="w-full">
+                    <div className="w-full relative">
+                        <div>
+                            <OrderSelect />
+                        </div>
                         <div class="flex flex-wrap">
                             <div className="w-full md:w-1/4">
                                 <ShopFilters productCategories={productCategories} filters={filters} priceLimits={priceLimits} sidebar={true} />
-
-                                {/* <ShopFilter2
-                                    sidebar={true}
-                                    filterPanelHandler={true}
-                                /> */}
-
                             </div>
 
                             <div className="w-full md:w-3/4">
@@ -91,7 +89,7 @@ export default function CategorySingle(props) {
                                     {(undefined !== productsListFt) && productsListFt?.length ? (
                                         productsListFt.map(product => <Product key={product?.id} product={product} categorySlug={categorySlug} details={true} bttn={true} loading={false} />)
                                     ) :
-                                    ""
+                                        ""
                                     }
 
                                     {/* {loading && Array.from(Array(6), (e, i) => (
@@ -179,7 +177,7 @@ export async function getStaticProps(context) {
             priceLimits: filters?.data?.priceLimits || [],
             categoryAcf: data?.products?.edges[0].node?.productCategories?.edges[0].node.categoryAcf || {},
             categoryName: data?.products?.edges[0].node?.productCategories?.edges[0].node?.name || '',
-            categorySlug: slug || productCategories?.edges[1].node?.slug ,
+            categorySlug: slug || productCategories?.edges[1].node?.slug,
         },
         revalidate: 10
     }
@@ -204,7 +202,7 @@ export async function getStaticPaths() {
                     params: { categorySlug: productCategory?.slug, chosenCategory: productCategory, pageNo: (index + 1).toString() },
                 }));
 
-                console.log( "Page to build: page/")
+                console.log("Page to build: page/")
                 console.log(paths)
 
                 pathsData.push(...paths)

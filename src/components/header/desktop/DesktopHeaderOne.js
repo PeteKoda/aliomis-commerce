@@ -27,7 +27,7 @@ const DesktopHeaderOne = ({className,navbarAlignment, containerFluid, dark}) => 
                                 search={true}
                                 cart={true}
                                 account={true}
-                                settings={true}
+                                settings={false}
                             />
                         </div>
                     </div>

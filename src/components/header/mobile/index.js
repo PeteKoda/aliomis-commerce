@@ -13,7 +13,7 @@ const MobileHeader = ({className, mobileNavbarHandler}) => {
                         search={true}
                         cart={true}
                         account={true}
-                        settings={true}
+                        settings={false}
                         mobileNavbarHandler={mobileNavbarHandler}
                     />
                 </div>

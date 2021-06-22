@@ -111,7 +111,7 @@ const SearchBoxOne = ({ className, isHidden, openHandler, closeHandler }) => {
                                                 if (cat.node.products.edges.length > 0) {
                                                     return (
                                                         <li key={`search-nav-${i}`} className={`py-2`} style={i !== 0 ? { borderTop: "1px solid lightgray", fontSize: "14px" } : { borderTop: "0", fontSize: "14px" }}>
-                                                            <Link href={`/${cat.node.slug}/?search=${searchIn}`} >
+                                                            <Link href={`/${cat.node.slug}/filter/?page=1&search=${searchIn}`} >
                                                                 <a>
                                                                     {`(${cat.node.products.edges.length}) results in: ${cat.node.name}`}
                                                                 </a>

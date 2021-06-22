@@ -37,7 +37,13 @@ const StripeForm = (props) => {
         try {
             const source = await handleStripe()
 
+
             let checkOutData = createCheckoutData(props.input, props.shippingInput, props.shipToDifferentAddress)
+
+            console.log(props.shipToDifferentAddress)
+            console.log(checkOutData)
+            props.setLoadingPayment(true)
+
 
             await checkout({
                 variables: {

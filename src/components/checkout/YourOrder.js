@@ -4,7 +4,6 @@ import Skeleton from 'react-loading-skeleton';
 
 
 const YourOrder = ({ cart, cartLoading, shippingMethodLoading }) => {
-    console.log(cart)
     return (
         <React.Fragment>
             { cart ? (

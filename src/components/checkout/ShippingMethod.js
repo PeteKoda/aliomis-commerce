@@ -3,7 +3,6 @@ import { Fragment } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 function findFridgeProducts(cart) {
-    console.log(cart)
     let isFridgeProducts = false
     cart.products.map((product) => {
         if (product.shippingClass === "produits-frais") {

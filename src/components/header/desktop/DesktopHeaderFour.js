@@ -20,7 +20,7 @@ const DesktopHeaderFour = ({navbarAlignment, logoAlignment, containerFluid, prod
                             search={true}
                             cart={true}
                             account={true}
-                            settings={true}
+                            settings={false}
                         />
                     </div>
                 </div>

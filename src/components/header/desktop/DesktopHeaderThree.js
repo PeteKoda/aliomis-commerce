@@ -57,7 +57,7 @@ const DesktopHeaderThree = ({navbarAlignment}) => {
                             search={true}
                             cart={true}
                             account={true}
-                            settings={true}
+                            settings={false}
                         />
                     </div>
                 </div>

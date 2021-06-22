@@ -41,7 +41,7 @@ const Pagination = ( {pagesCount, postName} ) => {
 						<a key={`id-${index}`} onClick={() => changePage(pageNo)}>
 							<a
 								className={cx( 'border border-gray-300 px-3 py-2 transition duration-500 ease-in-out hover:bg-gray-500 hover:text-white', {
-									'is-active bg-gray-500 text-white': pageNo === currentPageNo
+									'is-active m-color text-white': pageNo === currentPageNo
 								} )}
 							>
 								{pageNo}
